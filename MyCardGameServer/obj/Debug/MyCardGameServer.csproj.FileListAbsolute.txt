@@ -1,0 +1,7 @@
+c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.exe.config
+c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.exe
+c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.pdb
+c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csprojAssemblyReference.cache
+c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CoreCompileInputs.cache
+c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.exe
+c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.pdb
