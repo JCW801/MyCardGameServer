@@ -10,6 +10,8 @@ namespace MyCardGameServer
     {
         static void Main(string[] args)
         {
+            Server s = new Server();
+            Console.Read();
         }
     }
 }

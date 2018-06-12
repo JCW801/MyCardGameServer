@@ -5,3 +5,10 @@ c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\M
 c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CoreCompileInputs.cache
 c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.exe
 c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.pdb
+C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\GameDatabase.mdf
+C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\GameDatabase_log.ldf
+C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CopyComplete
+C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\Models.dll
+C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\Models.pdb
