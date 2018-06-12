@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbilityCard.cs" />
+    <Compile Include="AfterBattleRecoverEffect.cs" />
     <Compile Include="AllAttackEffect.cs" />
     <Compile Include="ApplyBuffEffect.cs" />
     <Compile Include="ApplySingleBuffEffect.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PVEBattle.cs" />
     <Compile Include="RandomAttackEffect.cs" />
+    <Compile Include="RecoverEffect.cs" />
     <Compile Include="Relic.cs" />
     <Compile Include="RestRoom.cs" />
     <Compile Include="SingleAttackEffect.cs" />

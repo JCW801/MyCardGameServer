@@ -10,14 +10,16 @@ namespace MyCardGameServer
     {
         public Server()
         {
-            NetworkController.ServerAwaitingClientLoop(AddClient);
+            NetworkController.ServerAwaitingClientLoop(FirstContact);
             Console.WriteLine("服务器开始运行,等待连接中...");
         }
 
-        /// <summary>
-        /// Add a new client.
-        /// </summary>
-        /// <param name="ss"></param>
+        private void FirstContact(SocketState ss)
+        {
+            ss.CallBackFunction = AddClient;
+            NetworkController.getData(ss);
+        }
+
         private void AddClient(SocketState ss)
         {
             NetworkController.getData(ss);

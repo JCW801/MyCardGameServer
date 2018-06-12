@@ -6,5 +6,6 @@ namespace Models
 {
     public class HeroRelic : Relic
     {
+        public Hero Owner { get; set; }
     }
 }

@@ -80,7 +80,7 @@
   <Class Name="Models.CardHolder" Collapsed="true">
     <Position X="5.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EggAABAQEoiQCQAIAAFAAAQgAIAAABAgAwQAoBAQIQg=</HashCode>
+      <HashCode>EggAABAQEoiQCQAIAAFAAGSgAIAAABAgAwQCoBAQMQg=</HashCode>
       <FileName>CardHolder.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -213,7 +213,7 @@
   <Class Name="Models.Player" Collapsed="true">
     <Position X="22" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAABAAAAAAAAAAAAAAACAAAAAACAAQAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -292,6 +292,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAIAAAAAEAAAABAAAAAAAAACAAAAIAAAAA=</HashCode>
       <FileName>WeakBuffEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.RecoverEffect" Collapsed="true">
+    <Position X="17.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoverEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.AfterBattleRecoverEffect" Collapsed="true">
+    <Position X="17.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AfterBattleRecoverEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Microsoft YaHei UI" Size="9" />

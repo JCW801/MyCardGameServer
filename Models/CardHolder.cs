@@ -134,16 +134,23 @@ namespace Models
         public event Action TurnEndEvent;
 
         /// <summary>
+        /// 战斗开始时触发的事件
+        /// </summary>
+        public event Action BattleStartEvent;
+
+        /// <summary>
+        /// 战斗结束时触发的事件
+        /// </summary>
+        public event Action<CardHolder> BattleEndEvent;
+
+        /// <summary>
         /// 攻击一个目标
         /// </summary>
         /// <param name="target">攻击目标</param>
         /// <param name="damage">攻击伤害</param>
         public void Attack(CardHolder target, int damage)
         {
-            if (PreAttackEvent != null)
-            {
-                PreAttackEvent();
-            }
+            PreAttackEvent?.Invoke();
 
             if (AttackDamageChangeEvent != null)
             {
@@ -152,10 +159,7 @@ namespace Models
 
             target.TakeAttack(this, damage);
 
-            if (AfterAttackEvent != null)
-            {
-                AfterAttackEvent();
-            }
+            AfterAttackEvent?.Invoke();
         }
 
         /// <summary>
@@ -165,10 +169,7 @@ namespace Models
         /// <param name="damage">攻击伤害</param>
         public void TakeAttack(CardHolder attacker, int damage)
         {
-            if (PreTakeAttackEvent != null)
-            {
-                PreTakeAttackEvent();
-            }
+            PreTakeAttackEvent?.Invoke();
 
             if (TakeAttackDamageChangeEvent != null)
             {
@@ -177,10 +178,7 @@ namespace Models
 
             if (CurrentBlockValue > 0)
             {
-                if (PreBlockEvent != null)
-                {
-                    PreBlockEvent();
-                }
+                PreBlockEvent?.Invoke();
 
                 if (CurrentBlockValue > damage)
                 {
@@ -191,16 +189,10 @@ namespace Models
                 {
                     damage -= CurrentBlockValue;
                     CurrentBlockValue = 0;
-                    if (BlockBreakEvent != null)
-                    {
-                        BlockBreakEvent();
-                    }
+                    BlockBreakEvent?.Invoke();
                 }
 
-                if (AfterBlockEvent != null)
-                {
-                    AfterBlockEvent();
-                }
+                AfterBlockEvent?.Invoke();
             }
 
             if (damage > 0)
@@ -208,10 +200,7 @@ namespace Models
                 TakeDamage(attacker, damage);
             }
 
-            if (AfterTakeAttackEvent != null)
-            {
-                AfterTakeAttackEvent();
-            }
+            AfterTakeAttackEvent?.Invoke();
         }
 
         /// <summary>
@@ -221,10 +210,7 @@ namespace Models
         /// <param name="damage">伤害量</param>
         public void TakeDamage(CardHolder attacker, int damage)
         {
-            if (PreTakeDamageEvent != null)
-            {
-                PreTakeDamageEvent();
-            }
+            PreTakeDamageEvent?.Invoke();
 
             if (TakeDamageChangeEvent != null)
             {
@@ -234,18 +220,12 @@ namespace Models
             if (damage < CurrentHealth)
             {
                 CurrentHealth -= damage;
-                if (AfterTakeDamageEvent != null)
-                {
-                    AfterTakeDamageEvent();
-                }
+                AfterTakeDamageEvent?.Invoke();
             }
             else
             {
                 CurrentHealth = 0;
-                if (DeathEvent != null)
-                {
-                    DeathEvent();
-                }
+                DeathEvent?.Invoke();
             }
         }
 
@@ -255,17 +235,11 @@ namespace Models
         /// <param name="value">格挡值</param>
         public void GainBlock(int value)
         {
-            if (PreGainBlockEvent != null)
-            {
-                PreGainBlockEvent();
-            }
+            PreGainBlockEvent?.Invoke();
 
             CurrentBlockValue += value;
 
-            if (AfterGainBlockEvent != null)
-            {
-                AfterGainBlockEvent();
-            }
+            AfterGainBlockEvent?.Invoke();
         }
 
         /// <summary>
@@ -275,10 +249,7 @@ namespace Models
         /// <param name="lastTurn">debuff持续时间</param>
         public void GainBuff(Buff buff, int lastTurn)
         {
-            if (PreGainDebuffEvent != null)
-            {
-                PreGainDebuffEvent();
-            }
+            PreGainDebuffEvent?.Invoke();
 
             if (Debuffs.ContainsKey(buff.BuffName))
             {
@@ -286,10 +257,7 @@ namespace Models
             }
             else
             {
-                if (PreGainNewDebuffEvent != null)
-                {
-                    PreGainNewDebuffEvent();
-                }
+                PreGainNewDebuffEvent?.Invoke();
 
                 Debuffs.Add(buff.BuffName, buff);
                 buff.BuffStart(this);
@@ -297,14 +265,25 @@ namespace Models
         }
 
         /// <summary>
+        /// 获得生命回复
+        /// </summary>
+        /// <param name="value"></param>
+        public void GainHealth(int value)
+        {
+            if (value > MaxHealth - CurrentHealth)
+            {
+                value = MaxHealth - CurrentHealth;
+            }
+
+            CurrentHealth += value;
+        }
+
+        /// <summary>
         /// 回合结束
         /// </summary>
         public void TurnEnd()
         {
-            if (TurnEndEvent != null)
-            {
-                TurnEndEvent();
-            }
+            TurnEndEvent?.Invoke();
 
             List<string> temp = new List<string>();
             foreach (var item in Debuffs)
@@ -327,10 +306,24 @@ namespace Models
         /// </summary>
         public void TurnStart()
         {
-            if (TurnStartEvent != null)
-            {
-                TurnStartEvent();
-            }
+            TurnStartEvent?.Invoke();
+        }
+
+
+        /// <summary>
+        /// 战斗开始
+        /// </summary>
+        public void BattleStart()
+        {
+            BattleStartEvent?.Invoke();
+        }
+
+        /// <summary>
+        /// 战斗结束
+        /// </summary>
+        public void BattleEnd()
+        {
+            BattleEndEvent?.Invoke(this);
         }
     }
 }
