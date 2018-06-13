@@ -9,7 +9,7 @@ namespace Models
         {
             if (targets != null && targets.Count > 0)
             {
-                foreach (var item in Enumerable.Range(0, AttackTargetCount))
+                foreach (var item in Enumerable.Range(0, AttackTimes))
                 {
                     foreach (var target in targets)
                     {

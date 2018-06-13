@@ -55,11 +55,15 @@
     <Compile Include="CardHolder.cs" />
     <Compile Include="CardHolderAbility.cs" />
     <Compile Include="CardPlayer.cs" />
+    <Compile Include="CardTransferModel.cs" />
     <Compile Include="ConditionCard.cs" />
     <Compile Include="Creep.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="DungeonRoom.cs" />
-    <Compile Include="EasilyInjuredBuffEffect.cs" />
+    <Compile Include="GameDictionary.cs" />
+    <Compile Include="HeroTransferModel.cs" />
+    <Compile Include="PlayerTransferModel.cs" />
+    <Compile Include="VulnerableBuffEffect.cs" />
     <Compile Include="Effect.cs" />
     <Compile Include="EventRoom.cs" />
     <Compile Include="Hero.cs" />

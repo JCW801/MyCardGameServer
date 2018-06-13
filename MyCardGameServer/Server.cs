@@ -52,10 +52,10 @@ namespace MyCardGameServer
 
         private void ClientLogin(SocketState ss)
         {
-            Player player = null;
+            PlayerTransferModel player = null;
             try
             {
-                player = JsonConvert.DeserializeObject<Player>(ss.SB.ToString());
+                player = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
             }
             catch (Exception){}
 
@@ -80,12 +80,31 @@ namespace MyCardGameServer
                                 {
                                     player.PlayerName = reader["PlayerName"].ToString();
                                     Console.WriteLine(String.Format("New Client successfully login as {0}({1})",player.AccountName,player.PlayerName));
+                                    player.Password = null;
                                 }
                             }
                             else
                             {
                                 errorString = "wrong AccountName/Password pair";
                                 NetworkController.Send(ss, "Wrong AccountName/Password pair", DisconnectClient);
+                                return;
+                            }
+                        }
+                    }
+                    query = String.Format("SELECT * FROM PlayerHeroData WHERE PlayerName = '{0}'", player.PlayerName);
+
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Console.WriteLine(String.Format("{0}({1}) has hero {2}", player.AccountName, player.PlayerName, reader["HeroName"].ToString()));
+                                }
                             }
                         }
                     }

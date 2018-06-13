@@ -8,16 +8,32 @@ namespace Models
         /// <summary>
         /// 默认卡牌魔法消耗
         /// </summary>
-        public int DefaultManaCost { get; set; }
+        public int DefaultManaCost
+        {
+            get
+            {
+                return defaultManaCost;
+            }
+            set
+            {
+                defaultManaCost = value;
+                if (!IsUpgrade)
+                {
+                    CurrentManaCost = value;
+                }
+            }
+        }
+        private int defaultManaCost;
+
+        /// <summary>
+        /// 默认升级后卡牌魔法消耗
+        /// </summary>
+        public int DefaultUpgradeManaCost { get; set; }
+
         /// <summary>
         /// 当前卡牌魔法消耗
         /// </summary>
         public int CurrentManaCost { get; private set; }
-
-        /// <summary>
-        /// 卡牌效果
-        /// </summary>
-        public Effect[] CardEffects { get; set; }
 
         /// <summary>
         /// 打出卡牌

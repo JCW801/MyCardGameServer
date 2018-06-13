@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using Models;
 using MyCardGameServer;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TestClient
 {
@@ -9,7 +11,36 @@ namespace TestClient
     {
         static void Main(string[] args)
         {
-            Client c = new Client();
+            var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+
+            CardTransferModel card = new CardTransferModel();
+
+            card.CanPlay = true;
+            card.CanUpgrade = true;
+            card.CardDescription = "Deal 8 damage. Apply Vulnerable for 2 turns.";
+            card.CardDescriptionAfterUpgreade = "Deal 10 damage. Apply Vulnerable for 3 turns.";
+            card.CardEffectsString = new System.Collections.Generic.List<string>();
+            card.CardEffectsStringAfterUpgrade = new System.Collections.Generic.List<string>();
+            card.CardManaCost = 2;
+            card.CardManaCostAfterUpgrade = 2;
+            card.CardName = "Bash";
+            card.CardRarity = Card.Rarity.Basic;
+            card.CardSpriteName = "Warrior_Bash_Sprite";
+            card.Owner = "Warrior";
+            card.CardType = Card.Type.Attack;
+            
+            card.CardEffectsString.Add("SingleAttack 8 1");
+            card.CardEffectsString.Add("ApplySingleBuff Vulnerable 2");
+            card.CardEffectsStringAfterUpgrade.Add("SingleAttack 10 1");
+            card.CardEffectsStringAfterUpgrade.Add("ApplySingleBuff Vulnerable 3");
+
+            gameDic.CardDic.Add(card.CardName, card);
+
+            File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
+
+            Console.WriteLine(JsonConvert.SerializeObject(gameDic));
+
+            //Client c = new Client();
             Console.Read();
         }
 
@@ -44,9 +75,9 @@ namespace TestClient
 
             private void Login(SocketState ss)
             {
-                Player p = new Player();
-                p.AccountName = "TestPlayer1";
-                p.Password = "password1";
+                PlayerTransferModel p = new PlayerTransferModel();
+                p.AccountName = "TestPlayer2";
+                p.Password = "password2";
 
                 NetworkController.Send(ss, JsonConvert.SerializeObject(p));
                 ss.CallBackFunction = GetRequestResult;

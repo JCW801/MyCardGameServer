@@ -4,3 +4,9 @@ c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\M
 c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
 c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\Models\obj\Debug\Models.dll
 c:\users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\Models\obj\Debug\Models.pdb
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\bin\Debug\Models.dll
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\bin\Debug\Models.pdb
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.dll
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.pdb

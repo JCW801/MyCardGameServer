@@ -11,7 +11,7 @@ namespace Models
             {
                 Random rnd = new Random();
                 IEnumerator<CardHolder> enumerator = targets.GetEnumerator();
-                foreach (var item in Enumerable.Range(0, AttackTargetCount))
+                foreach (var item in Enumerable.Range(0, AttackTimes))
                 {
                     int i = rnd.Next(targets.Count);
                     while (i-- != 0)
