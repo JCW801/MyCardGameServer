@@ -79,6 +79,7 @@ namespace MyCardGameServer
                                 while (reader.Read())
                                 {
                                     player.PlayerName = reader["PlayerName"].ToString();
+                                    Console.WriteLine(String.Format("New Client successfully login as {0}({1})",player.AccountName,player.PlayerName));
                                 }
                             }
                             else

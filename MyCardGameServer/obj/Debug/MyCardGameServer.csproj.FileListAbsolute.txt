@@ -12,3 +12,17 @@ C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\M
 C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CopyComplete
 C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\Models.dll
 C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\MyCardGameServer\bin\Debug\Models.pdb
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\GameDatabase.mdf
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\GameDatabase_log.ldf
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.exe.config
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.exe
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.pdb
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\Models.dll
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\Models.pdb
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.exe
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.pdb
