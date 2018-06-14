@@ -28,45 +28,50 @@ namespace MyCardGameServer
 
         private void FirstContact(SocketState ss)
         {
-            ss.CallBackFunction = GetRequestAfterFirstContact;
-            NetworkController.getData(ss);
-        }
-
-        private void GetRequestAfterFirstContact(SocketState ss)
-        {
-            Console.WriteLine("A new Client has contacted the Server.");
+            Console.WriteLine("A new client has contacted the server.");
             lock (clients)
             {
                 clients.Add(ss);
             }
-            if (ss.SB.ToString().Equals("Login"))
-            {
-                ss.SB.Clear();
-                ss.CallBackFunction = ClientLogin;
-                NetworkController.Send(ss,"LoginAccept");
-                NetworkController.getData(ss);
-            }
-            else
-            {
-                errorString = "illegal request.";
-                NetworkController.Send(ss, "Illegal request", DisconnectClient);
-            }
+            ss.CallBackFunction = WaitForClientData;
+            NetworkController.getData(ss);
         }
-
-        private void ClientLogin(SocketState ss)
+        
+        private void WaitForClientData(SocketState ss)
         {
-            PlayerTransferModel player = null;
+            string s = ss.SB.ToString();
+            ss.SB.Clear();
             try
             {
-                player = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
-                ss.SB.Clear();
-            }
-            catch (Exception){}
+                PlayerTransferModel player = JsonConvert.DeserializeObject<PlayerTransferModel>(s);
+                
+                switch (player.TransferRequest)
+                {
+                    case PlayerTransferModel.TransferRequestType.Login:
+                        ClientLogin(player, ss);
+                        break;
+                }
 
+                NetworkController.getData(ss);
+
+            }
+            catch
+            {
+                errorString = "illegal data";
+                PlayerTransferModel player = new PlayerTransferModel();
+                player.TransferState = PlayerTransferModel.TransferStateType.Error;
+                player.TransferStateMessage = "Illegal data";
+                NetworkController.Send(ss, JsonConvert.SerializeObject(player), DisconnectClient);
+            }
+            
+        }
+
+        private void ClientLogin(PlayerTransferModel player,SocketState ss)
+        {
             if (player != null && player.AccountName != null && player.Password != null)
             {
                 player.AccountName = player.AccountName.ToLower();
-                Console.WriteLine("New Client wants to login as " + player.AccountName + ".");
+                Console.WriteLine("New client wants to login as " + player.AccountName + ".");
 
                 String query = String.Format("SELECT * FROM PlayerAccountData WHERE AccountName = '{0}' AND Password = '{1}'", player.AccountName,player.Password);
                 using (SqlConnection connection = new SqlConnection(sqlConnectionString))
@@ -85,12 +90,16 @@ namespace MyCardGameServer
                                     player.PlayerName = reader["PlayerName"].ToString();
                                     Console.WriteLine(String.Format("New Client successfully login as {0}({1}).",player.AccountName,player.PlayerName));
                                     player.Password = null;
+                                    player.TransferState = PlayerTransferModel.TransferStateType.Accept;
                                 }
                             }
                             else
                             {
                                 errorString = "wrong AccountName/Password pair";
-                                NetworkController.Send(ss, "Wrong AccountName/Password pair", DisconnectClient);
+                                player = new PlayerTransferModel();
+                                player.TransferState = PlayerTransferModel.TransferStateType.Decline;
+                                player.TransferStateMessage = "Wrong AccountName/Password pair";
+                                NetworkController.Send(ss, JsonConvert.SerializeObject(player), DisconnectClient);
                                 return;
                             }
                         }
@@ -111,9 +120,7 @@ namespace MyCardGameServer
                                 {
                                     player.PlayerHeroList.Add(GameDic.HeroDic[reader["HeroName"].ToString()]);
                                     Console.WriteLine(String.Format("User data has sent to {0}({1}), waiting for client action.", player.AccountName, player.PlayerName));
-                                    ss.CallBackFunction = WaitForClientAction;
                                     NetworkController.Send(ss, JsonConvert.SerializeObject(player));
-                                    NetworkController.getData(ss);
                                 }
                             }
                         }
@@ -122,14 +129,8 @@ namespace MyCardGameServer
             }
             else
             {
-                errorString = "illegal data";
-                NetworkController.Send(ss, "Illegal data", DisconnectClient);
+                throw new Exception();
             }
-        }
-
-        private void WaitForClientAction(SocketState ss)
-        {
-
         }
 
         private void DisconnectClient(SocketState ss)

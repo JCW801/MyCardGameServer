@@ -73,58 +73,27 @@ namespace TestClient
 
             //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
 
-            Client c = new Client();
+            GameClient.Client.ConnectToServer(FirstContact);
             Console.Read();
         }
 
-        public class Client
+        private static void FirstContact()
         {
-            public Client ()
+            GameClient.Client.Login("TestPlayer1", "password1", Login);
+        }
+
+        private static void Login(PlayerTransferModel player)
+        {
+            if (player.TransferState != PlayerTransferModel.TransferStateType.Accept)
             {
-                NetworkController.ConnectToServer(FirstContact, "localhost");
+                Console.WriteLine(player.TransferStateMessage);
+            }
+            else
+            {
+                Console.WriteLine(player.PlayerName + " " + player.PlayerHeroList[0].HeroName);
             }
 
-            private void FirstContact(SocketState ss)
-            {
-                ss.CallBackFunction = GetRequestResult;
-                NetworkController.Send(ss, "Login");
-                NetworkController.getData(ss);
-            }
-
-            private void GetRequestResult(SocketState ss)
-            {
-                string result = ss.SB.ToString();
-                ss.SB.Clear();
-                try
-                {
-                    PlayerTransferModel player = JsonConvert.DeserializeObject<PlayerTransferModel>(result);
-                    Console.WriteLine(player.PlayerName);
-                }
-                catch (Exception)
-                {
-                    switch (result)
-                    {
-                        case "LoginAccept":
-                            Login(ss);
-                            break;
-                        default:
-                            Console.WriteLine(result);
-                            break;
-                    }
-                }
-            }
-
-            private void Login(SocketState ss)
-            {
-                PlayerTransferModel p = new PlayerTransferModel();
-                p.AccountName = "TestPlayer1";
-                p.Password = "password1";
-
-                NetworkController.Send(ss, JsonConvert.SerializeObject(p));
-                ss.CallBackFunction = GetRequestResult;
-                NetworkController.getData(ss);
-            }
-
+            GameClient.Client.Login("TestPlayer2", "password2", Login);
         }
     }
 }
