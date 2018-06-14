@@ -38,7 +38,7 @@
   <Class Name="Models.Attackffect" Collapsed="true">
     <Position X="10" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>AttackEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,7 +73,7 @@
   <Class Name="Models.Card" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAIQ=</HashCode>
+      <HashCode>AAEAAECAAAAAAAAAAAAAAAgAABgAAAAACAAoAAAAAIQ=</HashCode>
       <FileName>Card.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -82,13 +82,6 @@
     <TypeIdentifier>
       <HashCode>EggAABAQEoiQCQAIAAFAAGSgAIAAABAgAwQCoBAQMQg=</HashCode>
       <FileName>CardHolder.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Models.Ability" Collapsed="true">
-    <Position X="1.75" Y="12.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CardHolderAbility.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.CardPlayer" Collapsed="true">
@@ -126,11 +119,11 @@
       <FileName>DungeonRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Models.EasilyInjuredBuffEffect" Collapsed="true">
+  <Class Name="Models.VulnerableBuffEffect" Collapsed="true">
     <Position X="3.25" Y="11.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIAAAAAEAAAABAAAAAAAAACAAAAAAIAAA=</HashCode>
-      <FileName>EasilyInjuredBuffEffect.cs</FileName>
+      <HashCode>AAAAAAAAAAAIAAAAAEAAAABAAAAAAAAACAAAAAAAEAA=</HashCode>
+      <FileName>VulnerableBuffEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.Effect" Collapsed="true">
@@ -150,22 +143,8 @@
   <Class Name="Models.Hero" Collapsed="true">
     <Position X="25.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAIAAAAAAAAAAACAABAAAAAAAAAAAAEAA=</HashCode>
+      <HashCode>AAAAAAAAAABAIAAAAAAAAAAACAAAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>Hero.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Models.HeroAbility" Collapsed="true">
-    <Position X="0.5" Y="13.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>HeroAbility.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Models.HeroRelic" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>HeroRelic.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.MegaCreep" Collapsed="true">
@@ -185,15 +164,8 @@
   <Class Name="Models.Monster" Collapsed="true">
     <Position X="4.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Monster.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Models.MonsterAbility" Collapsed="true">
-    <Position X="2.75" Y="13.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MonsterAbility.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.MonsterDungeonRoom" Collapsed="true">
@@ -206,14 +178,14 @@
   <Class Name="Models.PlayableCard" Collapsed="true">
     <Position X="6.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAgACAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAgCAAAAAAAgAAAAAEAAAAAA=</HashCode>
       <FileName>PlayableCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.Player" Collapsed="true">
     <Position X="22" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAABAAAAAAAAAAAAAAACAAAAAACAAQAAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -248,7 +220,7 @@
   <Class Name="Models.Relic" Collapsed="true">
     <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAABAAAAAAAAAAAAAgAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <HashCode>AAAJAAgAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Relic.cs</FileName>
     </TypeIdentifier>
   </Class>

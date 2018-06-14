@@ -11,8 +11,9 @@ namespace TestClient
     {
         static void Main(string[] args)
         {
-            var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+            //var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
 
+            /*
             CardTransferModel card = new CardTransferModel();
 
             card.CanPlay = true;
@@ -35,12 +36,44 @@ namespace TestClient
             card.CardEffectsStringAfterUpgrade.Add("ApplySingleBuff Vulnerable 3");
 
             gameDic.CardDic.Add(card.CardName, card);
+            */
 
-            File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
+            /*
+            HeroTransferModel hero = new HeroTransferModel();
 
-            Console.WriteLine(JsonConvert.SerializeObject(gameDic));
+            hero.HeroName = "Warrior";
+            hero.HeroSprite = "Warrior_Sprite";
+            hero.HeroBasicCard = new System.Collections.Generic.Dictionary<string, int>();
+            hero.HeroBasicCard.Add("Bash", 1);
+            hero.HeroBasicCard.Add("WarriorStrike", 5);
+            hero.HeroBasicCard.Add("WarriorDefend", 4);
+            hero.HeroCard = new System.Collections.Generic.List<string>();
+            hero.HeroHealth = 80;
+            hero.HeroGold = 99;
+            hero.HeroBasicRilic = new System.Collections.Generic.List<string>();
+            hero.HeroBasicRilic.Add("BurningBlood");
 
-            //Client c = new Client();
+            gameDic.HeroDic.Add("Warrior", hero);
+            */
+
+            /*
+            RelicTransferModel relic = new RelicTransferModel();
+
+            relic.RelicDescription = "At the end of combat, heal 6 HP.";
+            relic.RelicEffectsString = new System.Collections.Generic.List<string>();
+            relic.RelicEffectsString.Add("AfterBattleRecover 6");
+            relic.RelicName = "BurningBlood";
+            relic.RelicRarity = Relic.Rarity.Starter;
+            relic.RelicSpriteName = "Relic_BurningBlood_Sprite";
+
+            gameDic.RelicDic.Add(relic.RelicName, relic);
+            */
+
+            //File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
+
+            //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
+
+            Client c = new Client();
             Console.Read();
         }
 
@@ -62,22 +95,30 @@ namespace TestClient
             {
                 string result = ss.SB.ToString();
                 ss.SB.Clear();
-                switch (result)
+                try
                 {
-                    case "LoginAccept":
-                        Login(ss);
-                        break;
-                    default:
-                        Console.WriteLine(result);
-                        break;
+                    PlayerTransferModel player = JsonConvert.DeserializeObject<PlayerTransferModel>(result);
+                    Console.WriteLine(player.PlayerName);
+                }
+                catch (Exception)
+                {
+                    switch (result)
+                    {
+                        case "LoginAccept":
+                            Login(ss);
+                            break;
+                        default:
+                            Console.WriteLine(result);
+                            break;
+                    }
                 }
             }
 
             private void Login(SocketState ss)
             {
                 PlayerTransferModel p = new PlayerTransferModel();
-                p.AccountName = "TestPlayer2";
-                p.Password = "password2";
+                p.AccountName = "TestPlayer1";
+                p.Password = "password1";
 
                 NetworkController.Send(ss, JsonConvert.SerializeObject(p));
                 ss.CallBackFunction = GetRequestResult;

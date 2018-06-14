@@ -26,6 +26,6 @@ namespace Models
         /// <summary>
         /// 玩家拥有英雄
         /// </summary>
-        public List<CardTransferModel> PlayerHeroList { get; set; }
+        public List<HeroTransferModel> PlayerHeroList { get; set; }
     }
 }

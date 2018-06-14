@@ -53,7 +53,6 @@
     <Compile Include="BuffEffect.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardHolder.cs" />
-    <Compile Include="CardHolderAbility.cs" />
     <Compile Include="CardPlayer.cs" />
     <Compile Include="CardTransferModel.cs" />
     <Compile Include="ConditionCard.cs" />
@@ -63,16 +62,14 @@
     <Compile Include="GameDictionary.cs" />
     <Compile Include="HeroTransferModel.cs" />
     <Compile Include="PlayerTransferModel.cs" />
+    <Compile Include="RelicTransferModel.cs" />
     <Compile Include="VulnerableBuffEffect.cs" />
     <Compile Include="Effect.cs" />
     <Compile Include="EventRoom.cs" />
     <Compile Include="Hero.cs" />
-    <Compile Include="HeroAbility.cs" />
-    <Compile Include="HeroRelic.cs" />
     <Compile Include="MegaCreep.cs" />
     <Compile Include="MisteryShop.cs" />
     <Compile Include="Monster.cs" />
-    <Compile Include="MonsterAbility.cs" />
     <Compile Include="MonsterDungeonRoom.cs" />
     <Compile Include="PlayableCard.cs" />
     <Compile Include="Player.cs" />

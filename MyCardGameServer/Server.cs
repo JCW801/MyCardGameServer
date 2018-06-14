@@ -4,7 +4,8 @@ using Newtonsoft.Json;
 using Models;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace MyCardGameServer
 {
@@ -14,14 +15,16 @@ namespace MyCardGameServer
         private Dictionary<SocketState,Player> connectedClient;
         private string sqlConnectionString;
         string errorString;
+        GameDictionary GameDic;
 
         public Server()
         {
             clients = new List<SocketState>();
             NetworkController.ServerAwaitingClientLoop(FirstContact);
+            GameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
             sqlConnectionString = ConfigurationManager.ConnectionStrings["MyCardGameServer.Properties.Settings.GameDatabaseConnectionString"].ConnectionString;
             Console.WriteLine("Waiting for first connection...");
-        }
+        } 
 
         private void FirstContact(SocketState ss)
         {
@@ -56,6 +59,7 @@ namespace MyCardGameServer
             try
             {
                 player = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
+                ss.SB.Clear();
             }
             catch (Exception){}
 
@@ -79,7 +83,7 @@ namespace MyCardGameServer
                                 while (reader.Read())
                                 {
                                     player.PlayerName = reader["PlayerName"].ToString();
-                                    Console.WriteLine(String.Format("New Client successfully login as {0}({1})",player.AccountName,player.PlayerName));
+                                    Console.WriteLine(String.Format("New Client successfully login as {0}({1}).",player.AccountName,player.PlayerName));
                                     player.Password = null;
                                 }
                             }
@@ -91,8 +95,10 @@ namespace MyCardGameServer
                             }
                         }
                     }
-                    query = String.Format("SELECT * FROM PlayerHeroData WHERE PlayerName = '{0}'", player.PlayerName);
 
+                    player.PlayerHeroList = new List<HeroTransferModel>();
+
+                    query = String.Format("SELECT * FROM PlayerHeroData WHERE PlayerName = '{0}'", player.PlayerName);
                     using (SqlCommand command = connection.CreateCommand())
                     {
                         command.CommandText = query;
@@ -103,7 +109,11 @@ namespace MyCardGameServer
                             {
                                 while (reader.Read())
                                 {
-                                    Console.WriteLine(String.Format("{0}({1}) has hero {2}", player.AccountName, player.PlayerName, reader["HeroName"].ToString()));
+                                    player.PlayerHeroList.Add(GameDic.HeroDic[reader["HeroName"].ToString()]);
+                                    Console.WriteLine(String.Format("User data has sent to {0}({1}), waiting for client action.", player.AccountName, player.PlayerName));
+                                    ss.CallBackFunction = WaitForClientAction;
+                                    NetworkController.Send(ss, JsonConvert.SerializeObject(player));
+                                    NetworkController.getData(ss);
                                 }
                             }
                         }
@@ -115,6 +125,11 @@ namespace MyCardGameServer
                 errorString = "illegal data";
                 NetworkController.Send(ss, "Illegal data", DisconnectClient);
             }
+        }
+
+        private void WaitForClientAction(SocketState ss)
+        {
+
         }
 
         private void DisconnectClient(SocketState ss)

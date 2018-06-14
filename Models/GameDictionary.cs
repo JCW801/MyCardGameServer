@@ -16,6 +16,11 @@ namespace Models
         /// <summary>
         /// 游戏所有英雄信息
         /// </summary>
-        public Dictionary<string, Hero> HeroDic { get; set; }
+        public Dictionary<string, HeroTransferModel> HeroDic { get; set; }
+
+        /// <summary>
+        /// 游戏所有遗物信息
+        /// </summary>
+        public Dictionary<string, RelicTransferModel> RelicDic { get; set; }
     }
 }

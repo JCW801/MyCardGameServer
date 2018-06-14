@@ -17,14 +17,9 @@ namespace Models
         public string HeroSpriteName { get; set; }
 
         /// <summary>
-        /// 英雄能力
-        /// </summary>
-        public HeroAbility[] HeroAbilities { get; set; }
-
-        /// <summary>
         /// 英雄默认持有圣物
         /// </summary>
-        public HeroRelic[] HeroDefaultRelics { get; set; }
+        public Relic[] HeroDefaultRelics { get; set; }
 
         /// <summary>
         /// 所有英雄专属卡牌
