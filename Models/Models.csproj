@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,22 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbilityCard.cs" />
     <Compile Include="AfterBattleRecoverEffect.cs" />
     <Compile Include="AllAttackEffect.cs" />
     <Compile Include="ApplyBuffEffect.cs" />
     <Compile Include="ApplySingleBuffEffect.cs" />
-    <Compile Include="AttackCard.cs" />
     <Compile Include="AttackEffect.cs" />
     <Compile Include="BlockEffect.cs" />
     <Compile Include="Boss.cs" />
     <Compile Include="Buff.cs" />
     <Compile Include="BuffEffect.cs" />
+    <Compile Include="BuffTransferModel.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardHolder.cs" />
     <Compile Include="CardPlayer.cs" />
     <Compile Include="CardTransferModel.cs" />
-    <Compile Include="ConditionCard.cs" />
     <Compile Include="Creep.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="DungeonRoom.cs" />
@@ -71,11 +72,9 @@
     <Compile Include="MisteryShop.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterDungeonRoom.cs" />
-    <Compile Include="PlayableCard.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerHero.cs" />
     <Compile Include="Potion.cs" />
-    <Compile Include="PowerCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PVEBattle.cs" />
     <Compile Include="RandomAttackEffect.cs" />
@@ -84,12 +83,12 @@
     <Compile Include="RestRoom.cs" />
     <Compile Include="SingleAttackEffect.cs" />
     <Compile Include="SingleSelfBlockEffect.cs" />
-    <Compile Include="SummonCard.cs" />
     <Compile Include="SummonedCreep.cs" />
     <Compile Include="WeakBuffEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,6 +41,7 @@ namespace Models
         /// 持有的Debuff
         /// </summary>
         public Dictionary<String, Buff> Debuffs { get; set; }
+
         /// <summary>
         /// 持有的Buff
         /// </summary>
@@ -253,7 +254,7 @@ namespace Models
 
             if (Debuffs.ContainsKey(buff.BuffName))
             {
-                Debuffs[buff.BuffName].BuffLastTurn += lastTurn;
+                Debuffs[buff.BuffName].BuffIncrease(lastTurn);
             }
             else
             {
@@ -288,7 +289,7 @@ namespace Models
             List<string> temp = new List<string>();
             foreach (var item in Debuffs)
             {
-                item.Value.BuffLastTurn--;
+                item.Value.BuffDecrease(1);
                 if (item.Value.BuffLastTurn == 0)
                 {
                     item.Value.BuffEnd(this);

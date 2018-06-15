@@ -13,6 +13,7 @@ namespace TestClient
         {
             //var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
 
+            //gameDic.BuffDic = new System.Collections.Generic.Dictionary<string, BuffTransferModel>();
             /*
             CardTransferModel card = new CardTransferModel();
 
@@ -69,7 +70,22 @@ namespace TestClient
             gameDic.RelicDic.Add(relic.RelicName, relic);
             */
 
-            //File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
+            /*
+            BuffTransferModel buff = new BuffTransferModel();
+
+            buff.BuffName = "Vulnerable";
+            buff.BuffDescription = "All attack damage received will be increased by 50% (this amount can be modified by relics).";
+            buff.BuffEffects = new System.Collections.Generic.List<string>();
+            buff.BuffSpriteName = "Buff_Vulnerable_Sprite";
+            buff.IsDebuff = true;
+            buff.IsPower = false;
+
+            buff.BuffEffects.Add("Vulnerable");
+
+            gameDic.BuffDic.Add(buff.BuffName, buff);
+
+            File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
+            */
 
             //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
 
@@ -90,10 +106,9 @@ namespace TestClient
             }
             else
             {
-                Console.WriteLine(player.PlayerName + " " + player.PlayerHeroList[0].HeroName);
+                Console.WriteLine(player.PlayerName + " " + player.PlayerHeroList[0]);
             }
-
-            GameClient.Client.Login("TestPlayer2", "password2", Login);
+            //GameClient.Client.Login("TestPlayer2", "password2", Login);
         }
     }
 }

@@ -10,3 +10,6 @@ C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.dll
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.pdb
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.csproj.CopyComplete

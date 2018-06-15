@@ -12,7 +12,7 @@ namespace MyCardGameServer
     public class Server
     {
         private List<SocketState> clients;
-        private Dictionary<SocketState,Player> connectedClient;
+        private Dictionary<string, Player> playerDic;
         private string sqlConnectionString;
         string errorString;
         GameDictionary GameDic;
@@ -91,6 +91,7 @@ namespace MyCardGameServer
                                     Console.WriteLine(String.Format("New Client successfully login as {0}({1}).",player.AccountName,player.PlayerName));
                                     player.Password = null;
                                     player.TransferState = PlayerTransferModel.TransferStateType.Accept;
+
                                 }
                             }
                             else
@@ -105,7 +106,7 @@ namespace MyCardGameServer
                         }
                     }
 
-                    player.PlayerHeroList = new List<HeroTransferModel>();
+                    player.PlayerHeroList = new List<string>();
 
                     query = String.Format("SELECT * FROM PlayerHeroData WHERE PlayerName = '{0}'", player.PlayerName);
                     using (SqlCommand command = connection.CreateCommand())
@@ -118,14 +119,35 @@ namespace MyCardGameServer
                             {
                                 while (reader.Read())
                                 {
-                                    player.PlayerHeroList.Add(GameDic.HeroDic[reader["HeroName"].ToString()]);
-                                    Console.WriteLine(String.Format("User data has sent to {0}({1}), waiting for client action.", player.AccountName, player.PlayerName));
-                                    NetworkController.Send(ss, JsonConvert.SerializeObject(player));
+                                    player.PlayerHeroList.Add(reader["HeroName"].ToString());
+                                }
+                            }
+                        }
+                    }
+
+                    player.PlayerCardList = new Dictionary<string, int>();
+
+                    query = String.Format("SELECT * FROM PlayerCardData WHERE PlayerName = '{0}'", player.PlayerName);
+                    using (SqlCommand command = connection.CreateCommand())
+                    {
+                        command.CommandText = query;
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    player.PlayerCardList.Add(reader["CardName"].ToString(),Convert.ToInt32(reader["CardCount"].ToString()));
                                 }
                             }
                         }
                     }
                 }
+
+                Console.WriteLine(String.Format("User data has sent to {0}({1}), waiting for client action.", player.AccountName, player.PlayerName));
+                NetworkController.Send(ss, JsonConvert.SerializeObject(player));
+                Player p = new Player(player, GameDic);
             }
             else
             {

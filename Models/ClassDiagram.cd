@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Models.AbilityCard" Collapsed="true">
-    <Position X="3" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>AbilityCard.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Models.AllAttackEffect" Collapsed="true">
     <Position X="7.75" Y="11.25" Width="1.5" />
     <TypeIdentifier>
@@ -17,7 +10,7 @@
   <Class Name="Models.ApplyBuffEffect" Collapsed="true">
     <Position X="1" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ApplyBuffEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -28,24 +21,17 @@
       <FileName>ApplySingleBuffEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Models.AttackCard" Collapsed="true">
-    <Position X="5.25" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>AttackCard.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Models.Attackffect" Collapsed="true">
     <Position X="10" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>AttackEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.BlockEffect" Collapsed="true">
     <Position X="14.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BlockEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,21 +45,21 @@
   <Class Name="Models.Buff" Collapsed="true">
     <Position X="22" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAIAAAAAAAAQEAAAAgAgAABAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAIAAgAAAAAAEAAAEEAAAAAAMAAAAIAEAQAEAA=</HashCode>
       <FileName>Buff.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.BuffEffect" Collapsed="true">
     <Position X="4.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>BuffEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.Card" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAECAAAAAAAAAAAAAAAgAABgAAAAACAAoAAAAAIQ=</HashCode>
+      <HashCode>QABAgAAAAAAAgAAAAAAAGABAAAAIEIAIAAAABAgACAA=</HashCode>
       <FileName>Card.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -89,13 +75,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAQAAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAIA=</HashCode>
       <FileName>CardPlayer.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Models.ConditionCard" Collapsed="true">
-    <Position X="0.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ConditionCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.Creep" Collapsed="true">
@@ -129,7 +108,7 @@
   <Class Name="Models.Effect" Collapsed="true">
     <Position X="7.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Effect.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -143,7 +122,7 @@
   <Class Name="Models.Hero" Collapsed="true">
     <Position X="25.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAIAAAAAAAAAAACAAAAAAAAAAAAAAAEAA=</HashCode>
+      <HashCode>AAEAAEIgAAAAAAAgAAAIAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Hero.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -175,24 +154,17 @@
       <FileName>MonsterDungeonRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Models.PlayableCard" Collapsed="true">
-    <Position X="6.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACAAAAAgCAAAAAAAgAAAAAEAAAAAA=</HashCode>
-      <FileName>PlayableCard.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Models.Player" Collapsed="true">
     <Position X="22" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.PlayerHero" Collapsed="true">
     <Position X="23.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PlayerHero.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -201,13 +173,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Potion.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Models.PowerCard" Collapsed="true">
-    <Position X="9.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PowerCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.RandomAttackEffect" Collapsed="true">
@@ -220,7 +185,7 @@
   <Class Name="Models.Relic" Collapsed="true">
     <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAJAAgAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACQAIAAABAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Relic.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -245,13 +210,6 @@
       <FileName>SingleSelfBlockEffect.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Models.SummonCard" Collapsed="true">
-    <Position X="7.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SummonCard.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Models.SummonedCreep" Collapsed="true">
     <Position X="7.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
@@ -269,7 +227,7 @@
   <Class Name="Models.RecoverEffect" Collapsed="true">
     <Position X="17.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>RecoverEffect.cs</FileName>
     </TypeIdentifier>
   </Class>

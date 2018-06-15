@@ -22,5 +22,10 @@ namespace Models
         /// 游戏所有遗物信息
         /// </summary>
         public Dictionary<string, RelicTransferModel> RelicDic { get; set; }
+
+        /// <summary>
+        /// 游戏所有Buff信息
+        /// </summary>
+        public Dictionary<string, BuffTransferModel> BuffDic { get; set; }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Models
 {
-    public abstract class Card
+    public class Card
     {
         public enum Rarity { Basic, Common, Uncommon, Rare, UnavailableForPlayer }
 
@@ -11,56 +13,115 @@ namespace Models
         /// <summary>
         /// 卡牌名
         /// </summary>
-        public string CardName { get; set; }
+        private string cardName;
 
         /// <summary>
         /// 卡牌图案文件名
         /// </summary>
-        public string CardSpriteName { get; set; }
+        private string cardSpriteName;
 
         /// <summary>
         /// 卡牌描述
         /// </summary>
-        public string CardDescription { get; set; }
+        private string cardDescription;
 
         /// <summary>
         /// 卡牌升级后叙述
         /// </summary>
-        public string CardDescriptionAfterUpgreade { get; set; }
+        private string cardDescriptionAfterUpgrade;
+
+        /// <summary>
+        /// 卡牌蓝耗
+        /// </summary>
+        private int cardManaCost;
+
+        /// <summary>
+        /// 卡牌升级后蓝耗
+        /// </summary>
+        private int cardManaCostAfterUpgrade;
 
         /// <summary>
         /// 卡牌持有者
         /// </summary>
-        public CardHolder Owner { get; private set; }
+        private CardHolder owner;
 
         /// <summary>
         /// 卡牌稀有度
         /// </summary>
-        public Rarity CardRarity { get; set; }
+        private Rarity cardRarity;
 
         /// <summary>
         /// 卡牌类型
         /// </summary>
-        public Type CardType { get; set; }
+        private Type cardType;
 
         /// <summary>
         /// 卡牌是否可升级
         /// </summary>
-        public bool CanUpgrade { get; set; }
+        private bool canUpgrade;
+
+        /// <summary>
+        /// 卡牌是否可打出
+        /// </summary>
+        private bool canPlay;
 
         /// <summary>
         /// 卡牌是否升级
         /// </summary>
-        public bool IsUpgrade { get; private set; }
+        private bool isUpgrade;
 
         /// <summary>
         /// 卡牌效果
         /// </summary>
-        public List<Effect> CardEffects { get; set; }
+        private List<Effect> cardEffects;
 
         /// <summary>
         /// 卡牌升级后效果
         /// </summary>
-        public List<Effect> CardUpgradeEffects { get; set; }
+        private List<Effect> cardEffectsAfterUpgrade;
+
+        public Card(CardTransferModel card)
+        {
+            canPlay = card.CanPlay;
+            canUpgrade = card.CanUpgrade;
+            cardDescription = card.CardDescription;
+            cardDescriptionAfterUpgrade = card.CardDescriptionAfterUpgreade;
+            cardManaCost = card.CardManaCost;
+            cardManaCostAfterUpgrade = card.CardManaCostAfterUpgrade;
+            cardName = card.CardName;
+            cardRarity = card.CardRarity;
+            cardSpriteName = card.CardSpriteName;
+            cardType = card.CardType;
+
+            cardEffects = new List<Effect>();
+            foreach (var item in card.CardEffectsString)
+            {
+                string[] s = item.Split(' ');
+                var effectType = System.Type.GetType("Models."+s[0] + "Effect");
+                Effect effect = Activator.CreateInstance(effectType) as Effect;
+                List<string> temp = new List<string>();
+                foreach (var i in Enumerable.Range(1, s.Length - 1))
+                {
+                    temp.Add(s[i]);
+                }
+                effect.SetEffect(temp);
+                cardEffects.Add(effect);
+            }
+
+            cardEffectsAfterUpgrade = new List<Effect>();
+            foreach (var item in card.CardEffectsStringAfterUpgrade)
+            {
+                string[] s = item.Split(' ');
+                var effectType = System.Type.GetType("Models." + s[0] + "Effect");
+                Effect effect = Activator.CreateInstance(effectType) as Effect;
+                List<string> temp = new List<string>();
+                foreach (var i in Enumerable.Range(1, s.Length - 1))
+                {
+                    temp.Add(s[i]);
+                }
+                effect.SetEffect(temp);
+                cardEffectsAfterUpgrade.Add(effect);
+            }
+        }
     }
 }
