@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 namespace Models
 {
-    public abstract class MonsterDungeonRoom : DungeonRoom
+    public abstract class MonsterRoom : DungeonRoom
     {
         public Monster[] RoomMonster { get; set; }
     }

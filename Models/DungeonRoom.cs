@@ -6,14 +6,29 @@ namespace Models
     public abstract class DungeonRoom
     {
         /// <summary>
-        /// 房间所在副本
+        /// 房间深度
         /// </summary>
-        public Dungeon RoomDungeon;
+        public int RoomDepth;
 
         /// <summary>
-        /// 下一个房间列表
+        /// 房间在对应深度的编号
         /// </summary>
-        public DungeonRoom[] NextRooms { get; set; }
+        public int RoomIndex;
+
+        /// <summary>
+        /// 下一层左房间
+        /// </summary>
+        DungeonRoom NextLeftRoom;
+
+        /// <summary>
+        /// 下一层中房间
+        /// </summary>
+        DungeonRoom NextMiddleRoom;
+
+        /// <summary>
+        /// 下一层右房间
+        /// </summary>
+        DungeonRoom NextRightRoom;
 
         /// <summary>
         /// 移动到下一个房间

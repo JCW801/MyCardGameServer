@@ -9,9 +9,9 @@ namespace Models
     public class PVEBattle
     {
         private CardPlayer player;
-        private MonsterDungeonRoom room;
+        private MonsterRoom room;
 
-        public PVEBattle (CardPlayer _player, MonsterDungeonRoom _room)
+        public PVEBattle (CardPlayer _player, MonsterRoom _room)
         {
             player = _player;
             room = _room;

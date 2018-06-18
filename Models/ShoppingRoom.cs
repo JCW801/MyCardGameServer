@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 namespace Models
 {
-    public class MisteryShop : DungeonRoom
+    public class ShoppingRoom : DungeonRoom
     {
         public Relic[] Relics { get; set; }
         public Card[] Cards { get; set; }
