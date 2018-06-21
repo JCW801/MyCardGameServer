@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 namespace Models
 {
-    public class RestRoom : DungeonRoom
+    public class BonfireRoom : DungeonRoom
     {
     }
 }

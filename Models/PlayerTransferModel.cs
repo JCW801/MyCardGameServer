@@ -10,12 +10,12 @@ namespace Models
     {
         public enum TransferStateType { Error, Accept, Decline }
 
-        public enum TransferRequestType { Login }
+        public enum TransferRequestType { Login, EnterDungeon }
 
         /// <summary>
         /// 传输状态信息
         /// </summary>
-        public string TransferStateMessage { get; set; }
+        public string TransferMessage { get; set; }
 
         /// <summary>
         /// 传输状态
@@ -52,18 +52,25 @@ namespace Models
         /// </summary>
         public Dictionary<string, int> PlayerCardList {get; set;}
 
+        /// <summary>
+        /// 玩家进入副本时的信息
+        /// </summary>
+        public CardPlayerTransferModel CardPlayer { get; set; }
+
         public PlayerTransferModel Clone()
         {
             PlayerTransferModel clone = new PlayerTransferModel();
 
-            clone.TransferStateMessage = TransferStateMessage;
+            clone.TransferMessage = TransferMessage;
             clone.TransferState = TransferState;
             clone.TransferRequest = TransferRequest;
             clone.PlayerName = PlayerName;
             clone.AccountName = AccountName;
             clone.Password = Password;
-            clone.PlayerHeroList = new List<string>(PlayerHeroList.ToArray());
-
+            if (PlayerHeroList != null)
+            {
+                clone.PlayerHeroList = new List<string>(PlayerHeroList.ToArray());
+            }
             return clone;
         }
     }

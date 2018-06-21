@@ -57,10 +57,13 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardHolder.cs" />
     <Compile Include="CardPlayer.cs" />
+    <Compile Include="CardPlayerTransferModel.cs" />
     <Compile Include="CardTransferModel.cs" />
     <Compile Include="Creep.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="DungeonRoom.cs" />
+    <Compile Include="DungeonRoomTransferModel.cs" />
+    <Compile Include="DungeonTransferModel.cs" />
     <Compile Include="EliteMonsterRoom.cs" />
     <Compile Include="GameDictionary.cs" />
     <Compile Include="HeroTransferModel.cs" />
@@ -84,7 +87,7 @@
     <Compile Include="RandomAttackEffect.cs" />
     <Compile Include="RecoverEffect.cs" />
     <Compile Include="Relic.cs" />
-    <Compile Include="RestRoom.cs" />
+    <Compile Include="BonfireRoom.cs" />
     <Compile Include="SingleAttackEffect.cs" />
     <Compile Include="SingleSelfBlockEffect.cs" />
     <Compile Include="SummonedCreep.cs" />

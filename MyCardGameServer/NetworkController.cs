@@ -146,6 +146,11 @@ namespace MyCardGameServer
         {
             SocketState ss = (SocketState)ar.AsyncState;
 
+            if (ss.TheSocket.Connected == false)
+            {
+                return;
+            }
+
             int bytesRead = ss.TheSocket.EndReceive(ar);
 
             // If the socket is still open

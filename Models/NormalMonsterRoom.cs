@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class NormalMonsterRoom:MonsterRoom
+    public class NormalMonsterRoom : MonsterRoom
     {
     }
 }

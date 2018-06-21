@@ -83,26 +83,40 @@ namespace TestClient
             buff.BuffEffects.Add("Vulnerable");
 
             gameDic.BuffDic.Add(buff.BuffName, buff);
-
-            File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
             */
 
+            /*
+            DungeonTransferModel dungeon = new DungeonTransferModel();
+            dungeon.DungeonName = "TestDungeon";
+            dungeon.DungeonDepth = 16;
+            dungeon.BonfireRoomLevel = new System.Collections.Generic.HashSet<int> {15, 12, 9};
+            dungeon.EliteMonsterRoomLevel = new System.Collections.Generic.HashSet<int> {13, 11, 9, 6};
+            dungeon.EventRoomLevel = new System.Collections.Generic.HashSet<int> { 14, 13, 12, 10, 8, 5, 4, 3, 2, 1 };
+            dungeon.NormalMonsterRoomLevel = new System.Collections.Generic.HashSet<int> { 14, 11, 10, 8, 5, 4, 3, 2, 1, 0 };
+            dungeon.ShoppingRoomLevel = new System.Collections.Generic.HashSet<int> {12, 8, 4};
+            dungeon.TreasureRoomLevel = new System.Collections.Generic.HashSet<int> { 7 };
+
+            gameDic.DungeonDic.Add("TestDungeon", dungeon);
+            */
+
+            //File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
             //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
 
             GameClient.Client.ConnectToServer(FirstContact);
+
             Console.Read();
         }
 
         private static void FirstContact()
         {
-            GameClient.Client.Login("TestPlayer1", "password1", Login);
+            GameClient.Client.Login("TestPlayer", "password1", Login);
         }
 
         private static void Login(PlayerTransferModel player)
         {
             if (player.TransferState != PlayerTransferModel.TransferStateType.Accept)
             {
-                Console.WriteLine(player.TransferStateMessage);
+                Console.WriteLine(player.TransferMessage);
             }
             else
             {

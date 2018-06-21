@@ -9,7 +9,7 @@ namespace Models
         /// <summary>
         /// 英雄名称
         /// </summary>
-        private string heroName;
+        public string HeroName { get; private set; }
 
         /// <summary>
         /// 英雄对应图片文件名
@@ -43,7 +43,7 @@ namespace Models
 
         public Hero(HeroTransferModel hero, GameDictionary gameDic)
         {
-            heroName = hero.HeroName;
+            HeroName = hero.HeroName;
             heroSpriteName = hero.HeroSprite;
             heroHealth = hero.HeroHealth;
             heroGold = hero.HeroGold;

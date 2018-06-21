@@ -30,5 +30,29 @@ namespace Models
                 playerHeros.Add(new PlayerHero(gameDic.HeroDic[item], player.PlayerCardList, gameDic));
             }
         }
+
+        public bool HasCard(string name, int cardCount)
+        {
+            foreach (var item in playerHeros)
+            {
+                if (item.HasCard(name, cardCount))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool HasHero(string name)
+        {
+            foreach (var item in playerHeros)
+            {
+                if (item.GetHeroName() == name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

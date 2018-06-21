@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Models
 {
-    public class DungeonRoom
+    public class DungeonRoomTransferModel
     {
-        public enum RoomType {NormalMonsterRoom, EliteMonsterRoom, TreasureRoom, BossMonsterRoom, ShoppingRoom, EventRoom, BonfireRoom}
+        public enum RoomType { NormalMonsterRoom, EliteMonsterRoom, TreasureRoom, BossMonsterRoom, ShoppingRoom, EventRoom, BonfireRoom }
 
         /// <summary>
         /// 房间深度
@@ -36,13 +39,5 @@ namespace Models
         /// 是否连接下一层右房间
         /// </summary>
         public bool HasNextRightRoom { get; set; }
-
-
-        public DungeonRoom Clone()
-        {
-            var result = new DungeonRoom();
-            
-            return new DungeonRoom();
-        }
     }
 }

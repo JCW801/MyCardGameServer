@@ -13,7 +13,7 @@ namespace Models
         /// <summary>
         /// 卡牌名
         /// </summary>
-        private string cardName;
+        public string CardName { get; private set; }
 
         /// <summary>
         /// 卡牌图案文件名
@@ -48,7 +48,7 @@ namespace Models
         /// <summary>
         /// 卡牌稀有度
         /// </summary>
-        private Rarity cardRarity;
+        public Rarity CardRarity { get; private set; }
 
         /// <summary>
         /// 卡牌类型
@@ -88,8 +88,8 @@ namespace Models
             cardDescriptionAfterUpgrade = card.CardDescriptionAfterUpgreade;
             cardManaCost = card.CardManaCost;
             cardManaCostAfterUpgrade = card.CardManaCostAfterUpgrade;
-            cardName = card.CardName;
-            cardRarity = card.CardRarity;
+            CardName = card.CardName;
+            CardRarity = card.CardRarity;
             cardSpriteName = card.CardSpriteName;
             cardType = card.CardType;
 

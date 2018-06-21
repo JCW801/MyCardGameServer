@@ -6,8 +6,5 @@ namespace Models
 {
     public class ShoppingRoom : DungeonRoom
     {
-        public Relic[] Relics { get; set; }
-        public Card[] Cards { get; set; }
-
     }
 }

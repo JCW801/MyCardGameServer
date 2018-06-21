@@ -29,5 +29,22 @@ namespace Models
                 }
             }
         }
+
+        public bool HasCard(string s, int i)
+        {
+            foreach (var item in heroCards)
+            {
+                if (item.Key.CardName == s && item.Value >= i)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public string GetHeroName()
+        {
+            return hero.HeroName;
+        }
     }
-}
+} 
