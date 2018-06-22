@@ -9,7 +9,7 @@ namespace Models
         /// <summary>
         /// 玩家名称
         /// </summary>
-        private string playerName;
+        public string playerName { get; private set; }
 
         /// <summary>
         /// 玩家持有的英雄信息

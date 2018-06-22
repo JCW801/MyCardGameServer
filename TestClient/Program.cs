@@ -109,7 +109,7 @@ namespace TestClient
 
         private static void FirstContact()
         {
-            GameClient.Client.Login("TestPlayer", "password1", Login);
+            GameClient.Client.Login("TestPlayer1", "password1", Login);
         }
 
         private static void Login(PlayerTransferModel player)
@@ -126,6 +126,8 @@ namespace TestClient
             CardPlayerTransferModel cardPlayer = new CardPlayerTransferModel();
             cardPlayer.MainHero = "Warrior";
             cardPlayer.CardDic = GameClient.Client.GameDic.HeroDic["Warrior"].HeroBasicCard;
+
+            GameClient.Client.EnterDungeon("TestDungeon", cardPlayer, EnterDungeon);
 
             //GameClient.Client.Login("TestPlayer2", "password2", Login);
         }

@@ -55,6 +55,7 @@ namespace MyCardGameServer
                         ClientLogin(player, ss);
                         break;
                     case PlayerTransferModel.TransferRequestType.EnterDungeon:
+                        ClientEnterDungeon(player, ss);
                         break;
                     default:
                         throw new Exception();
@@ -170,6 +171,7 @@ namespace MyCardGameServer
         {
             if (playerDic.ContainsKey(ss) && player.TransferMessage != null && player.CardPlayer != null && GameDic.DungeonDic.ContainsKey(player.TransferMessage))
             {
+                Console.WriteLine(String.Format("{0} want to enter {1}.", playerDic[ss].playerName, player.TransferMessage));
                 int count = 0;
                 string heroName="";
                 foreach (var item in player.CardPlayer.CardDic)
@@ -224,7 +226,7 @@ namespace MyCardGameServer
 
                 player.TransferState = PlayerTransferModel.TransferStateType.Accept;
                 player.Dungeon = temp;
-
+                string s = JsonConvert.SerializeObject(player);
                 NetworkController.Send(ss, JsonConvert.SerializeObject(player));
             }
             else
