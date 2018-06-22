@@ -54,5 +54,10 @@ namespace Models
             }
             return false;
         }
+
+        public void EnterDungeon(CardPlayerTransferModel cp, GameDictionary gameDic)
+        {
+            cardPlayer = new CardPlayer(cp, gameDic);
+        }
     }
 }

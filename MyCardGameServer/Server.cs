@@ -204,16 +204,20 @@ namespace MyCardGameServer
                         }
                     }
                 }
-
                 if (count != GameDic.DungeonDic[player.TransferMessage].DungeonAllowedCardCount)
                 {
                     throw new Exception();
                 }
-
-                if (!playerDic[ss].HasHero(heroName))
+                if (!playerDic[ss].HasHero(heroName) || heroName != player.CardPlayer.MainHero)
                 {
                     throw new Exception();
                 }
+                if (player.CardPlayer.SubHero != null && !playerDic[ss].HasHero(player.CardPlayer.SubHero))
+                {
+                    throw new Exception();
+                }
+
+                playerDic[ss].EnterDungeon(player.CardPlayer, GameDic);
 
                 NetworkController.Send(ss, JsonConvert.SerializeObject(GameDic.DungeonDic[player.TransferMessage].Generate()));
             }
