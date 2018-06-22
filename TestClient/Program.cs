@@ -95,6 +95,7 @@ namespace TestClient
             dungeon.NormalMonsterRoomLevel = new System.Collections.Generic.HashSet<int> { 14, 11, 10, 8, 5, 4, 3, 2, 1, 0 };
             dungeon.ShoppingRoomLevel = new System.Collections.Generic.HashSet<int> {12, 8, 4};
             dungeon.TreasureRoomLevel = new System.Collections.Generic.HashSet<int> { 7 };
+            dungeon.DungeonAllowedCardCount = 10;
 
             gameDic.DungeonDic.Add("TestDungeon", dungeon);
             */

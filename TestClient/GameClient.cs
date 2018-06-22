@@ -82,7 +82,17 @@ namespace TestClient
         private void LoginCallback(SocketState ss)
         {
             socketState = ss;
-            var playerModel = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
+            PlayerTransferModel playerModel = null;
+            try
+            {
+                playerModel = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
+            }
+            catch
+            {
+                NetworkController.getData(ss);
+                return;
+            }
+
             if (playerModel.TransferState == PlayerTransferModel.TransferStateType.Accept)
             {
                 Player = new Player(playerModel, GameDic);
@@ -114,7 +124,17 @@ namespace TestClient
         private void EnterDungeonCallback(SocketState ss)
         {
             socketState = ss;
-            var playerModel = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
+            PlayerTransferModel playerModel = null;
+            try
+            {
+               playerModel = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
+            }
+            catch
+            {
+                NetworkController.getData(ss);
+                return;
+            }
+
             if (Player != null && playerModel.TransferState == PlayerTransferModel.TransferStateType.Accept)
             {
                 Player.EnterDungeon(playerModel.Dungeon, playerModel.CardPlayer, GameDic);
