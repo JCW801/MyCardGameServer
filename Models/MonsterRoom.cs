@@ -6,6 +6,5 @@ namespace Models
 {
     public abstract class MonsterRoom : DungeonRoom
     {
-        public Monster[] RoomMonster { get; set; }
     }
 }

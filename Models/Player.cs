@@ -21,6 +21,11 @@ namespace Models
         /// </summary>
         private CardPlayer cardPlayer;
 
+        /// <summary>
+        /// 副本信息
+        /// </summary>
+        private Dungeon dungeon;
+
         public Player(PlayerTransferModel player, GameDictionary gameDic)
         {
             playerName = player.PlayerName;
@@ -55,9 +60,18 @@ namespace Models
             return false;
         }
 
-        public void EnterDungeon(CardPlayerTransferModel cp, GameDictionary gameDic)
+        public bool EnterDungeon(DungeonTransferModel dungeonTransferModel, CardPlayerTransferModel cp, GameDictionary gameDic)
         {
-            cardPlayer = new CardPlayer(cp, gameDic);
+            if (cardPlayer == null && dungeon == null)
+            {
+                cardPlayer = new CardPlayer(cp, gameDic);
+                dungeon = new Dungeon(dungeonTransferModel);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -122,7 +122,17 @@ namespace TestClient
             {
                 Console.WriteLine(player.PlayerName + " " + player.PlayerHeroList[0]);
             }
+
+            CardPlayerTransferModel cardPlayer = new CardPlayerTransferModel();
+            cardPlayer.MainHero = "Warrior";
+            cardPlayer.CardDic = GameClient.Client.GameDic.HeroDic["Warrior"].HeroBasicCard;
+
             //GameClient.Client.Login("TestPlayer2", "password2", Login);
+        }
+
+        private static void EnterDungeon(PlayerTransferModel player)
+        {
+            
         }
     }
 }

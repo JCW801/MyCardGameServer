@@ -1,7 +1,9 @@
 ﻿using Models;
 using MyCardGameServer;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
 
 namespace TestClient
 {
@@ -32,20 +34,25 @@ namespace TestClient
 
         private SocketState socketState;
 
-        private PlayerTransferModel player = new PlayerTransferModel();
+        public Player Player { get; private set; }
+
+        public GameDictionary GameDic { get; private set; }
 
         private CallbackDelegate callback;
 
         private PlayerCallbackPlayerDelegate playerCallback;
 
-        private GameClient() { }
+        private GameClient()
+        {
+            GameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+        }
 
         public void ConnectToServer(CallbackDelegate _callback)
         {
             NetworkController.ConnectToServer(ConnectToServerCallback, ServerIp);
             callback = _callback;
         }
-        
+
         private void ConnectToServerCallback(SocketState ss)
         {
             socketState = ss;
@@ -54,29 +61,68 @@ namespace TestClient
 
         public void Login(String accountName, String password, PlayerCallbackPlayerDelegate _callback)
         {
+            var playerModel = new PlayerTransferModel();
             if (socketState == null)
             {
-                player.TransferState = PlayerTransferModel.TransferStateType.Error;
-                player.TransferMessage = "没有连接到服务器";
-                _callback(player.Clone());
+                playerModel.TransferState = PlayerTransferModel.TransferStateType.Error;
+                playerModel.TransferMessage = "没有连接到服务器";
+                _callback(playerModel);
                 return;
             }
-            player.AccountName = accountName;
-            player.Password = password;
-            player.TransferRequest = PlayerTransferModel.TransferRequestType.Login;
+            playerModel.AccountName = accountName;
+            playerModel.Password = password;
+            playerModel.TransferRequest = PlayerTransferModel.TransferRequestType.Login;
 
             socketState.CallBackFunction = LoginCallback;
-            NetworkController.Send(socketState, JsonConvert.SerializeObject(player));
+            NetworkController.Send(socketState, JsonConvert.SerializeObject(playerModel));
             NetworkController.getData(socketState);
             playerCallback = _callback;
         }
 
         private void LoginCallback(SocketState ss)
         {
-            player = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
-            playerCallback(player.Clone());
-            ss.SB.Clear();
+            socketState = ss;
+            var playerModel = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
+            if (playerModel.TransferState == PlayerTransferModel.TransferStateType.Accept)
+            {
+                Player = new Player(playerModel, GameDic);
+            }
+            playerCallback(playerModel);
+            ss.SB = new System.Text.StringBuilder();
+        }
+
+        public void EnterDungeon(String dungeonName, CardPlayerTransferModel cardPlayer, PlayerCallbackPlayerDelegate _callback)
+        {
+            var playerModel = new PlayerTransferModel();
+            if (socketState == null || Player == null)
+            {
+                playerModel.TransferState = PlayerTransferModel.TransferStateType.Error;
+                playerModel.TransferMessage = "没有连接到服务器";
+                _callback(playerModel);
+                return;
+            }
+            playerModel.TransferRequest = PlayerTransferModel.TransferRequestType.EnterDungeon;
+            playerModel.TransferMessage = dungeonName;
+            playerModel.CardPlayer = cardPlayer;
+
+            socketState.CallBackFunction = EnterDungeonCallback;
+            NetworkController.Send(socketState, JsonConvert.SerializeObject(playerModel));
+            NetworkController.getData(socketState);
+            playerCallback = _callback;
+        }
+
+        private void EnterDungeonCallback(SocketState ss)
+        {
+            socketState = ss;
+            var playerModel = JsonConvert.DeserializeObject<PlayerTransferModel>(ss.SB.ToString());
+            if (Player != null && playerModel.TransferState == PlayerTransferModel.TransferStateType.Accept)
+            {
+                Player.EnterDungeon(playerModel.Dungeon, playerModel.CardPlayer, GameDic);
+            }
+            playerCallback(playerModel);
+            ss.SB = new System.Text.StringBuilder();
         }
     }
+
 }
 

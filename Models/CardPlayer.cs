@@ -14,6 +14,7 @@ namespace Models
         /// </summary>
         private Hero subHero;
 
+
         /// <summary>
         /// 所持药水
         /// </summary>

@@ -3,46 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Models
 {
-    public class DungeonRoom
+    public abstract class DungeonRoom
     {
-        public enum RoomType {NormalMonsterRoom, EliteMonsterRoom, TreasureRoom, BossMonsterRoom, ShoppingRoom, EventRoom, BonfireRoom}
-
         /// <summary>
         /// 房间深度
         /// </summary>
-        public int RoomDepth { get; set; }
-
-        /// <summary>
-        /// 房间类型
-        /// </summary>
-        public RoomType Type { get; set; }
+        public int RoomDepth { get; private set; }
 
         /// <summary>
         /// 房间在对应深度的编号
         /// </summary>
-        public int RoomIndex { get; set; }
+        public int RoomIndex { get; private set; }
 
         /// <summary>
         /// 是否连接下一层左房间
         /// </summary>
-        public bool HasNextLeftRoom { get; set; }
+        public bool HasNextLeftRoom { get; private set; }
 
         /// <summary>
         /// 是否连接下一层中房间
         /// </summary>
-        public bool HasNextMiddleRoom { get; set; }
+        public bool HasNextMiddleRoom { get; private set; }
 
         /// <summary>
         /// 是否连接下一层右房间
         /// </summary>
-        public bool HasNextRightRoom { get; set; }
+        public bool HasNextRightRoom { get; private set; }
 
-
-        public DungeonRoom Clone()
+        public void SetRoom(DungeonRoomTransferModel dungeonRoom)
         {
-            var result = new DungeonRoom();
-            
-            return new DungeonRoom();
+            RoomDepth = dungeonRoom.RoomDepth;
+            RoomIndex = dungeonRoom.RoomIndex;
+            HasNextLeftRoom = dungeonRoom.HasNextLeftRoom;
+            HasNextMiddleRoom = dungeonRoom.HasNextMiddleRoom;
+            HasNextRightRoom = dungeonRoom.HasNextRightRoom;
         }
     }
 }

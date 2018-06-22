@@ -216,10 +216,16 @@ namespace MyCardGameServer
                 {
                     throw new Exception();
                 }
+                var temp = GameDic.DungeonDic[player.TransferMessage].Generate();
+                if (!playerDic[ss].EnterDungeon(temp, player.CardPlayer, GameDic))
+                {
+                    throw new Exception();
+                }
 
-                playerDic[ss].EnterDungeon(player.CardPlayer, GameDic);
+                player.TransferState = PlayerTransferModel.TransferStateType.Accept;
+                player.Dungeon = temp;
 
-                NetworkController.Send(ss, JsonConvert.SerializeObject(GameDic.DungeonDic[player.TransferMessage].Generate()));
+                NetworkController.Send(ss, JsonConvert.SerializeObject(player));
             }
             else
             {

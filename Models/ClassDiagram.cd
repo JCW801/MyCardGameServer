@@ -59,7 +59,7 @@
   <Class Name="Models.Card" Collapsed="true">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QABAgAAAAAAAgAAAAAAAGABAAAAIEIAIAAAABAgACAA=</HashCode>
+      <HashCode>QABAgAAAAAAAgAAAAAAACABAABAIEIAIAAAAAAgACAQ=</HashCode>
       <FileName>Card.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,7 +73,7 @@
   <Class Name="Models.CardPlayer" Collapsed="true">
     <Position X="9.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAAAAAAEAAAAgAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CardPlayer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,7 +87,7 @@
   <Class Name="Models.DungeonRoom" Collapsed="true">
     <Position X="16" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAQAAAAEBAQAQAAAAAAABA=</HashCode>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAQAAAAEBAQAAAAAAAAAAA=</HashCode>
       <FileName>DungeonRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -108,14 +108,14 @@
   <Class Name="Models.EventRoom" Collapsed="true">
     <Position X="19.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EventRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.Hero" Collapsed="true">
     <Position X="25.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAEIgAAAAAAAgAAAIAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <HashCode>AAEAAAAAAABCIQAAAAAIAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Hero.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -129,7 +129,7 @@
   <Class Name="Models.ShoppingRoom" Collapsed="true">
     <Position X="17.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ShoppingRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -150,14 +150,14 @@
   <Class Name="Models.Player" Collapsed="true">
     <Position X="22" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAQAAIEAAAgAAAAAAAAAAAAIAAAAAgA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.PlayerHero" Collapsed="true">
     <Position X="23.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAEAAAAAAAAAIAAhAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PlayerHero.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -185,7 +185,7 @@
   <Class Name="Models.BonfireRoom" Collapsed="true">
     <Position X="15" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BonfireRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -234,35 +234,35 @@
   <Class Name="Models.NormalMonsterRoom" Collapsed="true">
     <Position X="9.5" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NormalMonsterRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.EliteMonsterRoom">
     <Position X="12.25" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EliteMonsterRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.BossMonsterRoom">
     <Position X="15.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BossMonsterRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.TreasureRoom">
     <Position X="9.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TreasureRoom.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models.Dungeon" Collapsed="true">
     <Position X="23.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAAAACAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAAAAAAAIAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Dungeon.cs</FileName>
     </TypeIdentifier>
   </Class>
