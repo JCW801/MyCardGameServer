@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Models
 {
     public class GameDictionary
     {
+        public static GameDictionary GameDic { get; set; }
+
         /// <summary>
         /// 游戏所有卡牌信息
         /// </summary>

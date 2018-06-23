@@ -8,44 +8,54 @@ namespace Models
         /// <summary>
         /// 人物名
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; protected set; }
         /// <summary>
         /// 对应图像文件名
         /// </summary>
-        public string SpriteName { get; set; }
+        public string SpriteName { get; protected set; }
 
         /// <summary>
         /// 最大血量
         /// </summary>
-        public int MaxHealth { get; set; }
+        public int MaxHealth { get; protected set; }
         /// <summary>
         /// 当前血量
         /// </summary>
-        public int CurrentHealth { get; private set; }
+        public int CurrentHealth { get; protected set; }
 
         /// <summary>
         /// 最大魔法值
         /// </summary>
-        public int MaxMana { get; set; }
+        public int MaxMana { get; protected set; }
         /// <summary>
         /// 当前魔法值
         /// </summary>
-        public int CurrentMana { get; private set; }
+        public int CurrentMana { get; protected set; }
+
+        /// <summary>
+        /// 所持卡牌
+        /// </summary>
+        public Dictionary<Card, int> CardPoor { get; protected set; }
+
+        /// <summary>
+        /// 所持遗物
+        /// </summary>
+        public List<Relic> Relics { get; protected set; }
 
         /// <summary>
         /// 当前格挡值
         /// </summary>
-        public int CurrentBlockValue { get; private set; }
+        public int CurrentBlockValue { get; protected set; }
 
         /// <summary>
         /// 持有的Debuff
         /// </summary>
-        public Dictionary<String, Buff> Debuffs { get; set; }
+        public Dictionary<String, Buff> Debuffs { get; protected set; }
 
         /// <summary>
-        /// 持有的Buff
+        /// 持有的Power
         /// </summary>
-        public Dictionary<String, Buff> Buffs { get; set; }
+        public Dictionary<String, Buff> Powers { get; protected set; }
 
         /// <summary>
         /// 在被攻击前触发的事件
@@ -250,18 +260,42 @@ namespace Models
         /// <param name="lastTurn">debuff持续时间</param>
         public void GainBuff(Buff buff, int lastTurn)
         {
-            PreGainDebuffEvent?.Invoke();
-
-            if (Debuffs.ContainsKey(buff.BuffName))
+            if (buff.IsPower)
             {
-                Debuffs[buff.BuffName].BuffIncrease(lastTurn);
+                if (!Powers.ContainsKey(buff.BuffName))
+                {
+                    Powers.Add(buff.BuffName, buff);
+                    Powers[buff.BuffName].BuffIncrease(lastTurn);
+                    buff.BuffStart(this);
+                }
+                else
+                {
+                    Powers[buff.BuffName].BuffIncrease(lastTurn);
+                    if (Powers[buff.BuffName].BuffLastTurn == 0)
+                    {
+                        Powers[buff.BuffName].BuffEnd(this);
+                        Powers.Remove(buff.BuffName);
+                    }
+                }
             }
             else
             {
-                PreGainNewDebuffEvent?.Invoke();
+                if (buff.IsDebuff)
+                {
+                    PreGainDebuffEvent?.Invoke();
 
-                Debuffs.Add(buff.BuffName, buff);
-                buff.BuffStart(this);
+                    if (!Debuffs.ContainsKey(buff.BuffName))
+                    {
+                        PreGainNewDebuffEvent?.Invoke();
+                        Debuffs.Add(buff.BuffName, buff);
+                        Debuffs[buff.BuffName].BuffIncrease(lastTurn);
+                        buff.BuffStart(this);
+                    }
+                    else
+                    {
+                        Debuffs[buff.BuffName].BuffIncrease(lastTurn);
+                    }
+                }
             }
         }
 

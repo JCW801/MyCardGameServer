@@ -9,12 +9,12 @@ namespace Models
         /// <summary>
         /// buff种类
         /// </summary>
-        public Buff Buff { get; set; }
+        public Buff Buff { get; private set; }
 
         /// <summary>
         /// buff持续时间
         /// </summary>
-        public int BuffLastTrun { get; set; }
+        public int BuffLastTrun { get; private set; }
 
         public override void SetEffect(List<string> s)
         {

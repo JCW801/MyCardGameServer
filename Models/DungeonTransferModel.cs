@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Models
 {
@@ -25,6 +24,16 @@ namespace Models
         public HashSet<int> TreasureRoomLevel { get; set; }
 
         public HashSet<int> ShoppingRoomLevel { get; set; }
+
+        public List<List<string>> LowLevelNormalMonsterRoomList { get; set; }
+
+        public List<List<string>> HighLevelNormalMsonterRoomList { get; set; }
+
+        public List<List<string>> EliteMonsterRoomList { get; set; }
+
+        public List<List<string>> BossMonsterRoomList { get; set; }
+
+        public List<List<string>> EventRoomList { get; set; }
 
         public SortedList<int, SortedList<int, DungeonRoomTransferModel>> RoomDic { get; set; }
 

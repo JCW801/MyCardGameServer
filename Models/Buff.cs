@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,8 +7,6 @@ namespace Models
 {
     public class Buff
     {
-        private static GameDictionary gameDic;
-
         /// <summary>
         /// buff名称
         /// </summary>
@@ -29,7 +25,7 @@ namespace Models
         /// <summary>
         /// 是否为power类buff(power类buff不会会随回合减少)
         /// </summary>
-        private bool isPower;
+        public bool IsPower { get; private set; }
 
         /// <summary>
         /// buff剩余持续时间
@@ -39,7 +35,7 @@ namespace Models
         /// <summary>
         /// buff是否是负面效果
         /// </summary>
-        private bool isDebuff;
+        public bool IsDebuff { get; private set; }
 
         /// <summary>
         /// buff效果
@@ -48,17 +44,13 @@ namespace Models
 
         public Buff(string buff)
         {
-            if (gameDic == null)
-            {
-                gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
-            }
-            var b = gameDic.BuffDic[buff];
+            var b = GameDictionary.GameDic.BuffDic[buff];
 
             BuffName = b.BuffName;
             buffSpriteName = b.BuffSpriteName;
             buffDescription = b.BuffDescription;
-            isPower = b.IsPower;
-            isDebuff = b.IsDebuff;
+            IsPower = b.IsPower;
+            IsDebuff = b.IsDebuff;
 
             buffEffects = new List<BuffEffect>();
             foreach (var item in b.BuffEffects)
@@ -76,6 +68,10 @@ namespace Models
         public void BuffIncrease(int i)
         {
             BuffLastTurn += i;
+            foreach (var item in buffEffects)
+            {
+                item.BuffValue = BuffLastTurn;
+            }
         }
 
         /// <summary>
@@ -85,6 +81,10 @@ namespace Models
         public void BuffDecrease(int i)
         {
             BuffLastTurn -= i;
+            foreach (var item in buffEffects)
+            {
+                item.BuffValue = BuffLastTurn;
+            }
         }
 
         /// <summary>

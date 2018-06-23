@@ -11,33 +11,32 @@ namespace TestClient
     {
         static void Main(string[] args)
         {
-            //var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+            var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
 
-            //gameDic.BuffDic = new System.Collections.Generic.Dictionary<string, BuffTransferModel>();
-            /*
+            
             CardTransferModel card = new CardTransferModel();
 
             card.CanPlay = true;
             card.CanUpgrade = true;
-            card.CardDescription = "Deal 8 damage. Apply Vulnerable for 2 turns.";
-            card.CardDescriptionAfterUpgreade = "Deal 10 damage. Apply Vulnerable for 3 turns.";
+            card.CardDescription = "";
+            card.CardDescriptionAfterUpgreade = "";
             card.CardEffectsString = new System.Collections.Generic.List<string>();
             card.CardEffectsStringAfterUpgrade = new System.Collections.Generic.List<string>();
-            card.CardManaCost = 2;
-            card.CardManaCostAfterUpgrade = 2;
-            card.CardName = "Bash";
-            card.CardRarity = Card.Rarity.Basic;
-            card.CardSpriteName = "Warrior_Bash_Sprite";
-            card.Owner = "Warrior";
+            card.CardManaCost = 1;
+            card.CardManaCostAfterUpgrade = 1;
+            card.CardName = "YJT_AttackCard";
+            card.CardRarity = Card.Rarity.UnavailableForPlayer;
+            card.CardSpriteName = "";
+            card.Owner = "异教徒";
             card.CardType = Card.Type.Attack;
             
-            card.CardEffectsString.Add("SingleAttack 8 1");
-            card.CardEffectsString.Add("ApplySingleBuff Vulnerable 2");
-            card.CardEffectsStringAfterUpgrade.Add("SingleAttack 10 1");
-            card.CardEffectsStringAfterUpgrade.Add("ApplySingleBuff Vulnerable 3");
+            card.CardEffectsString.Add("SingleAttack 6 1");
+            //card.CardEffectsString.Add("ApplySingleSelfBuff PowerCeremony 3");
+            card.CardEffectsStringAfterUpgrade.Add("SingleAttack 9 1");
+            //card.CardEffectsStringAfterUpgrade.Add("ApplySingleSelfBuff PowerCeremony 5");
 
             gameDic.CardDic.Add(card.CardName, card);
-            */
+            
 
             /*
             HeroTransferModel hero = new HeroTransferModel();
@@ -73,17 +72,18 @@ namespace TestClient
             /*
             BuffTransferModel buff = new BuffTransferModel();
 
-            buff.BuffName = "Vulnerable";
-            buff.BuffDescription = "All attack damage received will be increased by 50% (this amount can be modified by relics).";
+            buff.BuffName = "力量";
+            buff.BuffDescription = "增加攻击时的伤害.";
             buff.BuffEffects = new System.Collections.Generic.List<string>();
-            buff.BuffSpriteName = "Buff_Vulnerable_Sprite";
-            buff.IsDebuff = true;
-            buff.IsPower = false;
+            buff.BuffSpriteName = "Buff_Power_Sprite";
+            buff.IsDebuff = false;
+            buff.IsPower = true;
 
-            buff.BuffEffects.Add("Vulnerable");
+            buff.BuffEffects.Add("Power");
 
             gameDic.BuffDic.Add(buff.BuffName, buff);
             */
+
 
             /*
             DungeonTransferModel dungeon = new DungeonTransferModel();
@@ -100,10 +100,10 @@ namespace TestClient
             gameDic.DungeonDic.Add("TestDungeon", dungeon);
             */
 
-            //File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
+            File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
             //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
 
-            GameClient.Client.ConnectToServer(FirstContact);
+            //GameClient.Client.ConnectToServer(FirstContact);
 
             Console.Read();
         }

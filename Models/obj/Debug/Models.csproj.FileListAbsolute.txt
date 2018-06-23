@@ -9,9 +9,7 @@ C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\bin\Debug\Models
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.dll
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.pdb
-C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.csproj.CopyComplete
 C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\Models\bin\Debug\Newtonsoft.Json.dll
 C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\Models\bin\Debug\Newtonsoft.Json.xml
 C:\Users\lolit\onedrive\documents\visual studio 2017\Projects\MyCardGameServer\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\MyCardGameServer\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

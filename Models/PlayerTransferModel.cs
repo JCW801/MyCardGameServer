@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Models
 {
@@ -62,10 +61,6 @@ namespace Models
         /// </summary>
         public DungeonTransferModel Dungeon { get; set; }
 
-        /// <summary>
-        /// 玩家进入的副本房间信息
-        /// </summary>
-        public DungeonRoomTransferModel DungeonRoom { get; set; }
 
         public PlayerTransferModel Clone()
         {

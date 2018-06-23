@@ -22,6 +22,7 @@ namespace MyCardGameServer
             playerDic = new Dictionary<SocketState, Player>();
             NetworkController.ServerAwaitingClientLoop(FirstContact);
             GameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+            GameDictionary.GameDic = GameDic;
             sqlConnectionString = ConfigurationManager.ConnectionStrings["MyCardGameServer.Properties.Settings.GameDatabaseConnectionString"].ConnectionString;
             Console.WriteLine("Waiting for first connection...");
         } 
@@ -243,6 +244,22 @@ namespace MyCardGameServer
 
         private void ClientEnterDungeonRoom(PlayerTransferModel player, SocketState ss)
         {
+            if (playerDic.ContainsKey(ss) && player.TransferMessage != null)
+            {
+                int i = Convert.ToInt32(player.TransferMessage);
+                if (playerDic[ss].EnterDungeonRoom(i))
+                {
+
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         private void DisconnectClient(SocketState ss)

@@ -45,6 +45,7 @@ namespace TestClient
         private GameClient()
         {
             GameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+            GameDictionary.GameDic = GameDic;
         }
 
         public void ConnectToServer(CallbackDelegate _callback)
