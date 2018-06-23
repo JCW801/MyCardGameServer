@@ -15,6 +15,11 @@ namespace Models
         /// </summary>
         private string dungeonName;
 
+        /// <summary>
+        /// 玩家所在副本房间
+        /// </summary>
+        private DungeonRoom currentRoom;
+
         public Dungeon(DungeonTransferModel dungeon)
         {
             dungeonName = dungeon.DungeonName;
@@ -47,6 +52,65 @@ namespace Models
                             break;
                     }
                     roomDic[item.Key][item2.Key].SetRoom(item2.Value);
+                }
+            }
+        }
+
+        public bool MoveToNextRoom(int index)
+        {
+            if (currentRoom == null)
+            {
+                if (roomDic[0].ContainsKey(index))
+                {
+                    currentRoom = roomDic[0][index];
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (currentRoom.RoomDepth == dungeonDepth - 1)
+            {
+                return true;
+            }
+            else
+            {
+                switch (index)
+                {
+                    case -1:
+                        if (currentRoom.HasNextLeftRoom)
+                        {
+                            currentRoom = roomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex - 1];
+                            return true;
+                        }
+                        else
+                        {
+                            currentRoom = new BossMonsterRoom();
+                            return false;
+                        }
+                    case 0:
+                        if (currentRoom.HasNextMiddleRoom)
+                        {
+                            currentRoom = roomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex];
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    case 1:
+                        if (currentRoom.HasNextRightRoom)
+                        {
+                            currentRoom = roomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex - 1];
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    default:
+                        return false;
                 }
             }
         }

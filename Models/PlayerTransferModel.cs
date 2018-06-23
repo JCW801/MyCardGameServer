@@ -10,7 +10,7 @@ namespace Models
     {
         public enum TransferStateType { Error, Accept, Decline }
 
-        public enum TransferRequestType { Login, EnterDungeon }
+        public enum TransferRequestType { Login, EnterDungeon, EnterDungeonRoom }
 
         /// <summary>
         /// 传输状态信息
@@ -61,6 +61,11 @@ namespace Models
         /// 玩家进入的副本信息
         /// </summary>
         public DungeonTransferModel Dungeon { get; set; }
+
+        /// <summary>
+        /// 玩家进入的副本房间信息
+        /// </summary>
+        public DungeonRoomTransferModel DungeonRoom { get; set; }
 
         public PlayerTransferModel Clone()
         {

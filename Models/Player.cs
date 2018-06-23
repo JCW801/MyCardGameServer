@@ -73,5 +73,10 @@ namespace Models
                 return false;
             }
         }
+
+        public bool EnterDungeonRoom(int index)
+        {
+            return dungeon.MoveToNextRoom(index);
+        }
     }
 }

@@ -14,11 +14,11 @@ namespace Models
         /// </summary>
         private Hero subHero;
 
-
         /// <summary>
         /// 所持药水
         /// </summary>
         private List<Potion> potions;
+
 
         public CardPlayer(CardPlayerTransferModel cardPlayer, GameDictionary gameDic)
         {
