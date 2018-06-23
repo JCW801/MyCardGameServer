@@ -9,12 +9,23 @@ namespace Models
         /// <summary>
         /// 玩家名称
         /// </summary>
-        public string playerName { get; private set; }
+        public string PlayerName { get; private set; }
 
         /// <summary>
         /// 玩家持有的英雄信息
         /// </summary>
-        private List<PlayerHero> playerHeros;
+        public ICollection<PlayerHero> PlayerHeros
+        {
+            get
+            {
+                return playerHeroes.AsReadOnly();
+            }
+            private set
+            {
+                playerHeroes = value.ToList();
+            }
+        }
+        private List<PlayerHero> playerHeroes;
 
         /// <summary>
         /// 玩家进入副本后的信息
@@ -28,17 +39,17 @@ namespace Models
 
         public Player(PlayerTransferModel player, GameDictionary gameDic)
         {
-            playerName = player.PlayerName;
-            playerHeros = new List<PlayerHero>();
+            PlayerName = player.PlayerName;
+            PlayerHeros = new List<PlayerHero>();
             foreach (var item in player.PlayerHeroList)
             {
-                playerHeros.Add(new PlayerHero(gameDic.HeroDic[item], player.PlayerCardList, gameDic));
+                PlayerHeros.Add(new PlayerHero(gameDic.HeroDic[item], player.PlayerCardList, gameDic));
             }
         }
 
         public bool HasCard(string name, int cardCount)
         {
-            foreach (var item in playerHeros)
+            foreach (var item in PlayerHeros)
             {
                 if (item.HasCard(name, cardCount))
                 {
@@ -50,7 +61,7 @@ namespace Models
 
         public bool HasHero(string name)
         {
-            foreach (var item in playerHeros)
+            foreach (var item in PlayerHeros)
             {
                 if (item.GetHeroName() == name)
                 {

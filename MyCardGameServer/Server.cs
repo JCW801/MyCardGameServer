@@ -178,7 +178,7 @@ namespace MyCardGameServer
         {
             if (playerDic.ContainsKey(ss) && player.TransferMessage != null && player.CardPlayer != null && GameDic.DungeonDic.ContainsKey(player.TransferMessage))
             {
-                Console.WriteLine(String.Format("{0} wants to enter {1}.", playerDic[ss].playerName, player.TransferMessage));
+                Console.WriteLine(String.Format("{0} wants to enter {1}.", playerDic[ss].PlayerName, player.TransferMessage));
                 int count = 0;
                 string heroName="";
                 foreach (var item in player.CardPlayer.CardDic)
