@@ -26,3 +26,17 @@ C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\De
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CopyComplete
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.exe
 C:\Users\Administrator\Documents\GitHub\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.pdb
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\GameDatabase.mdf
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\GameDatabase_log.ldf
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.exe.config
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.exe
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\MyCardGameServer.pdb
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\Models.dll
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\Newtonsoft.Json.dll
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\Models.pdb
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\bin\Debug\Newtonsoft.Json.xml
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csprojResolveAssemblyReference.cache
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CoreCompileInputs.cache
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.csproj.CopyComplete
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.exe
+D:\GitHub项目\MyCardGameServer\MyCardGameServer\obj\Debug\MyCardGameServer.pdb
