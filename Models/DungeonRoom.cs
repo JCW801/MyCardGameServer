@@ -30,7 +30,23 @@ namespace Models
         /// </summary>
         public bool HasNextRightRoom { get; private set; }
 
+        /// <summary>
+        /// 设置房间
+        /// </summary>
+        /// <param name="dungeonRoom"></param>
         public void SetRoom(DungeonRoomTransferModel dungeonRoom)
+        {
+            RoomDepth = dungeonRoom.RoomDepth;
+            RoomIndex = dungeonRoom.RoomIndex;
+            HasNextLeftRoom = dungeonRoom.HasNextLeftRoom;
+            HasNextMiddleRoom = dungeonRoom.HasNextMiddleRoom;
+            HasNextRightRoom = dungeonRoom.HasNextRightRoom;
+        }
+
+        /// <summary>
+        /// 设置房间
+        /// </summary>
+        public void SetRoom(DungeonRoom dungeonRoom)
         {
             RoomDepth = dungeonRoom.RoomDepth;
             RoomIndex = dungeonRoom.RoomIndex;

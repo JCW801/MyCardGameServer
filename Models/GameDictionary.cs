@@ -33,5 +33,10 @@ namespace Models
         /// 游戏所有副本信息
         /// </summary>
         public Dictionary<string, DungeonTransferModel> DungeonDic { get; set; }
+
+        /// <summary>
+        /// 游戏所有怪物信息
+        /// </summary>
+        public Dictionary<string, MonsterTransferModel> MonsterDic { get; set; }
     }
 }

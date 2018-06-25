@@ -4,7 +4,7 @@ namespace Models
 {
     public class Monster : CardHolder
     {
-        public Monster(MonsterTransferModel monster, GameDictionary gameDic)
+        public Monster(MonsterTransferModel monster)
         {
             Powers = new Dictionary<string, Buff>();
             Debuffs = new Dictionary<string, Buff>();
@@ -17,12 +17,12 @@ namespace Models
 
             foreach (var item in monster.MonsterCardList)
             {
-                CardPoor.Add(new Card(gameDic.CardDic[item]),1);
+                CardPoor.Add(new Card(GameDictionary.GameDic.CardDic[item]),1);
             }
 
             foreach (var item in monster.MonsterRelicList)
             {
-                Relics.Add(new Relic(gameDic.RelicDic[item]));
+                Relics.Add(new Relic(GameDictionary.GameDic.RelicDic[item]));
             }
         }
     }

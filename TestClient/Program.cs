@@ -13,7 +13,8 @@ namespace TestClient
         {
             var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
 
-            
+
+            /*
             CardTransferModel card = new CardTransferModel();
 
             card.CanPlay = true;
@@ -36,7 +37,7 @@ namespace TestClient
             //card.CardEffectsStringAfterUpgrade.Add("ApplySingleSelfBuff PowerCeremony 5");
 
             gameDic.CardDic.Add(card.CardName, card);
-            
+            */
 
             /*
             HeroTransferModel hero = new HeroTransferModel();
@@ -97,7 +98,32 @@ namespace TestClient
             dungeon.TreasureRoomLevel = new System.Collections.Generic.HashSet<int> { 7 };
             dungeon.DungeonAllowedCardCount = 10;
 
+            dungeon.HighLevelNormalMsonterRoomList = new System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, int>>();
+            dungeon.LowLevelNormalMonsterRoomList = new System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, int>>();
+            dungeon.BossMonsterRoomList = new System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, int>>();
+            dungeon.EliteMonsterRoomList = new System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, int>>();
+            dungeon.EventRoomList = new System.Collections.Generic.List<string>();
+            dungeon.LowLevelThreshold = 7;
+
+            System.Collections.Generic.Dictionary<string, int> room = new System.Collections.Generic.Dictionary<string, int>();
+            room.Add("异教徒", 1);
+            dungeon.LowLevelNormalMonsterRoomList.Add(room);
+
             gameDic.DungeonDic.Add("TestDungeon", dungeon);
+            */
+
+            /*
+            MonsterTransferModel monster = new MonsterTransferModel();
+            monster.MonsterName = "异教徒";
+            monster.MonsterHealth = 55;
+            monster.MonsterSpriteName = "Monster_YJT_Spirte";
+            monster.MonsterCardList = new System.Collections.Generic.List<string>();
+            monster.MonsterRelicList = new System.Collections.Generic.List<string>();
+
+            monster.MonsterCardList.Add("YJT_PowerCeremonyCard");
+            monster.MonsterCardList.Add("YJT_AttackCard");
+
+            gameDic.MonsterDic.Add("异教徒", monster);
             */
 
             File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));

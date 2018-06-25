@@ -20,12 +20,12 @@ namespace Models
         private List<Potion> potions;
 
 
-        public CardPlayer(CardPlayerTransferModel cardPlayer, GameDictionary gameDic)
+        public CardPlayer(CardPlayerTransferModel cardPlayer)
         {
-            mainHero = new Hero(gameDic.HeroDic[cardPlayer.MainHero], gameDic);
+            mainHero = new Hero(GameDictionary.GameDic.HeroDic[cardPlayer.MainHero]);
             if (cardPlayer.SubHero != null)
             {
-                subHero = new Hero(gameDic.HeroDic[cardPlayer.SubHero], gameDic);
+                subHero = new Hero(GameDictionary.GameDic.HeroDic[cardPlayer.SubHero]);
             }
             potions = new List<Potion>();
             Powers = new Dictionary<string, Buff>();
@@ -39,17 +39,17 @@ namespace Models
 
             foreach (var item in cardPlayer.CardDic)
             {
-                CardPoor.Add(new Card(gameDic.CardDic[item.Key]), item.Value);
+                CardPoor.Add(new Card(GameDictionary.GameDic.CardDic[item.Key]), item.Value);
             }
 
-            foreach (var item in mainHero.heroDefaultRelics)
+            foreach (var item in mainHero.HeroDefaultRelics)
             {
                 Relics.Add(item);
             }
 
             if (subHero != null)
             {
-                foreach (var item in subHero.heroDefaultRelics)
+                foreach (var item in subHero.HeroDefaultRelics)
                 {
                     Relics.Add(item);
                 }

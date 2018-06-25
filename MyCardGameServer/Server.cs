@@ -162,7 +162,7 @@ namespace MyCardGameServer
 
                 Console.WriteLine(String.Format("User data has sent to {0}({1}), waiting for client action.", player.AccountName, player.PlayerName));
                 NetworkController.Send(ss, JsonConvert.SerializeObject(player));
-                Player p = new Player(player, GameDic);
+                Player p = new Player(player);
                 lock (playerDic)
                 {
                     playerDic.Add(ss, p);
@@ -226,7 +226,7 @@ namespace MyCardGameServer
                     throw new Exception();
                 }
                 var temp = GameDic.DungeonDic[player.TransferMessage].Generate();
-                if (!playerDic[ss].EnterDungeon(temp, player.CardPlayer, GameDic))
+                if (!playerDic[ss].EnterDungeon(temp, player.CardPlayer))
                 {
                     throw new Exception();
                 }
@@ -249,7 +249,7 @@ namespace MyCardGameServer
                 int i = Convert.ToInt32(player.TransferMessage);
                 if (playerDic[ss].EnterDungeonRoom(i))
                 {
-
+                 
                 }
                 else
                 {

@@ -34,14 +34,14 @@ namespace Models
         /// <summary>
         /// 英雄默认持有圣物
         /// </summary>
-        public List<Relic> heroDefaultRelics { get; private set; }
+        public List<Relic> HeroDefaultRelics { get; private set; }
 
         /// <summary>
         /// 所有英雄专属卡牌
         /// </summary>
         private List<Card> heroCards;
 
-        public Hero(HeroTransferModel hero, GameDictionary gameDic)
+        public Hero(HeroTransferModel hero)
         {
             HeroName = hero.HeroName;
             HeroSpriteName = hero.HeroSprite;
@@ -51,19 +51,19 @@ namespace Models
             heroBasicCard = new Dictionary<Card, int>();
             foreach (var item in hero.HeroBasicCard)
             {
-                heroBasicCard.Add(new Card(gameDic.CardDic[item.Key]), item.Value);
+                heroBasicCard.Add(new Card(GameDictionary.GameDic.CardDic[item.Key]), item.Value);
             }
 
             heroCards = new List<Card>();
             foreach (var item in hero.HeroCard)
             {
-                heroCards.Add(new Card(gameDic.CardDic[item]));
+                heroCards.Add(new Card(GameDictionary.GameDic.CardDic[item]));
             }
 
-            heroDefaultRelics = new List<Relic>();
+            HeroDefaultRelics = new List<Relic>();
             foreach (var item in hero.HeroBasicRilic)
             {
-                heroDefaultRelics.Add(new Relic(gameDic.RelicDic[item]));
+                HeroDefaultRelics.Add(new Relic(GameDictionary.GameDic.RelicDic[item]));
             }
         }
 

@@ -16,16 +16,16 @@ namespace Models
         /// </summary>
         private Dictionary<Card, int> heroCards;
 
-        public PlayerHero(HeroTransferModel _hero, Dictionary<string, int> cards, GameDictionary gameDic)
+        public PlayerHero(HeroTransferModel _hero, Dictionary<string, int> cards)
         {
-            hero = new Hero(_hero, gameDic);
+            hero = new Hero(_hero);
 
             heroCards = new Dictionary<Card, int>();
             foreach (var item in cards)
             {
-                if (gameDic.CardDic[item.Key].Owner.Equals(_hero.HeroName))
+                if (GameDictionary.GameDic.CardDic[item.Key].Owner.Equals(_hero.HeroName))
                 {
-                    heroCards.Add(new Card(gameDic.CardDic[item.Key]), item.Value);
+                    heroCards.Add(new Card(GameDictionary.GameDic.CardDic[item.Key]), item.Value);
                 }
             }
         }

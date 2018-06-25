@@ -7,33 +7,80 @@ namespace Models
 {
     public class DungeonTransferModel
     {
+        /// <summary>
+        /// 副本名
+        /// </summary>
         public string DungeonName { get; set; }
 
+        /// <summary>
+        /// 副本深度
+        /// </summary>
         public int DungeonDepth { get; set; }
 
+        /// <summary>
+        /// 低层阀值
+        /// </summary>
+        public int LowLevelThreshold { get; set; }
+
+        /// <summary>
+        /// 副本能带入的卡牌数
+        /// </summary>
         public int DungeonAllowedCardCount { get; set; }
 
+        /// <summary>
+        /// 可能会出现营火的楼层
+        /// </summary>
         public HashSet<int> BonfireRoomLevel { get; set; }
 
+        /// <summary>
+        /// 可能会出现普通敌人的楼层
+        /// </summary>
         public HashSet<int> NormalMonsterRoomLevel { get; set; }
 
+        /// <summary>
+        /// 可能会出现事件的楼层
+        /// </summary>
         public HashSet<int> EventRoomLevel { get; set; }
 
+        /// <summary>
+        /// 可能会出现精英敌人的楼层
+        /// </summary>
         public HashSet<int> EliteMonsterRoomLevel { get; set; }
 
+        /// <summary>
+        /// 可能会出现宝箱的楼层
+        /// </summary>
         public HashSet<int> TreasureRoomLevel { get; set; }
 
+        /// <summary>
+        /// 可能会出现商店的楼层
+        /// </summary>
         public HashSet<int> ShoppingRoomLevel { get; set; }
 
-        public List<List<string>> LowLevelNormalMonsterRoomList { get; set; }
+        /// <summary>
+        /// 副本低层可能会出现的怪物组合
+        /// </summary>
+        public List<Dictionary<string,int>> LowLevelNormalMonsterRoomList { get; set; }
 
-        public List<List<string>> HighLevelNormalMsonterRoomList { get; set; }
+        /// <summary>
+        /// 副本高层可能会出现的怪物组合
+        /// </summary>
+        public List<Dictionary<string, int>> HighLevelNormalMsonterRoomList { get; set; }
 
-        public List<List<string>> EliteMonsterRoomList { get; set; }
+        /// <summary>
+        /// 副本可能会出现的精英怪物组合
+        /// </summary>
+        public List<Dictionary<string, int>> EliteMonsterRoomList { get; set; }
 
-        public List<List<string>> BossMonsterRoomList { get; set; }
+        /// <summary>
+        /// 副本可能会出现的Boss组合
+        /// </summary>
+        public List<Dictionary<string, int>> BossMonsterRoomList { get; set; }
 
-        public List<List<string>> EventRoomList { get; set; }
+        /// <summary>
+        /// 副本可能会出现的事件
+        /// </summary>
+        public List<string> EventRoomList { get; set; }
 
         public SortedList<int, SortedList<int, DungeonRoomTransferModel>> RoomDic { get; set; }
 

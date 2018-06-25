@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Models
 {
-    public class NormalMonsterRoom : MonsterRoom
+    public class NormalMonsterRoom:MonsterRoom
     {
     }
 }

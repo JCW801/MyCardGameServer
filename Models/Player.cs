@@ -37,16 +37,22 @@ namespace Models
         /// </summary>
         private Dungeon dungeon;
 
-        public Player(PlayerTransferModel player, GameDictionary gameDic)
+        public Player(PlayerTransferModel player)
         {
             PlayerName = player.PlayerName;
-            PlayerHeros = new List<PlayerHero>();
+            playerHeroes = new List<PlayerHero>();
             foreach (var item in player.PlayerHeroList)
             {
-                PlayerHeros.Add(new PlayerHero(gameDic.HeroDic[item], player.PlayerCardList, gameDic));
+                playerHeroes.Add(new PlayerHero(GameDictionary.GameDic.HeroDic[item], player.PlayerCardList));
             }
         }
 
+        /// <summary>
+        /// 判断玩家是否持有足够对应名称的卡牌
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="cardCount"></param>
+        /// <returns></returns>
         public bool HasCard(string name, int cardCount)
         {
             foreach (var item in PlayerHeros)
@@ -59,6 +65,11 @@ namespace Models
             return false;
         }
 
+        /// <summary>
+        /// 判断玩家是否持有对应名称的英雄
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public bool HasHero(string name)
         {
             foreach (var item in PlayerHeros)
@@ -71,11 +82,18 @@ namespace Models
             return false;
         }
 
-        public bool EnterDungeon(DungeonTransferModel dungeonTransferModel, CardPlayerTransferModel cp, GameDictionary gameDic)
+        /// <summary>
+        /// 进入副本
+        /// </summary>
+        /// <param name="dungeonTransferModel"></param>
+        /// <param name="cp"></param>
+        /// <param name="gameDic"></param>
+        /// <returns></returns>
+        public bool EnterDungeon(DungeonTransferModel dungeonTransferModel, CardPlayerTransferModel cp)
         {
             if (cardPlayer == null && dungeon == null)
             {
-                cardPlayer = new CardPlayer(cp, gameDic);
+                cardPlayer = new CardPlayer(cp);
                 dungeon = new Dungeon(dungeonTransferModel);
                 return true;
             }
@@ -85,9 +103,23 @@ namespace Models
             }
         }
 
+        /// <summary>
+        /// 进入房间
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool EnterDungeonRoom(int index)
         {
-            return dungeon.MoveToNextRoom(index);
+            if (dungeon.MoveToNextRoom(index))
+            {
+                dungeon.SetRoom();
+            }
+            return false;
+        }
+
+        public Dictionary<int,Dictionary<int,KeyValuePair<DungeonRoomTransferModel.RoomType,bool[]>>> GetRoomMap()
+        {
+            return dungeon.GetRoomMap();
         }
     }
 }
