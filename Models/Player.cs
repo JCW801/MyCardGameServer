@@ -164,6 +164,9 @@ namespace Models
             return dungeon == null ? false : true;
         }
 
+        /// <summary>
+        /// 进入战斗
+        /// </summary>
         public void EnterBattle()
         {
             if (dungeon.GetCurrentRoom() is MonsterRoom)

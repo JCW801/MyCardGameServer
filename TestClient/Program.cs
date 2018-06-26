@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Models;
 using MyCardGameServer;
@@ -11,7 +12,7 @@ namespace TestClient
     {
         static void Main(string[] args)
         {
-            //var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+            var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
 
 
             /*
@@ -129,7 +130,7 @@ namespace TestClient
             //File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
             //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
 
-            GameClient.Client.ConnectToServer(FirstContact);
+            //GameClient.Client.ConnectToServer(FirstContact);
 
             Console.Read();
         }

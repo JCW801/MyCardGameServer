@@ -33,11 +33,6 @@ namespace Models
         public int CurrentMana { get; protected set; }
 
         /// <summary>
-        /// 所持卡牌
-        /// </summary>
-        public Dictionary<Card, int> CardPoor { get; protected set; }
-
-        /// <summary>
         /// 所持遗物
         /// </summary>
         public List<Relic> Relics { get; protected set; }

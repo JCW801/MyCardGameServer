@@ -19,6 +19,11 @@ namespace Models
         /// </summary>
         private List<Potion> potions;
 
+        /// <summary>
+        /// 所持卡牌
+        /// </summary>
+        public Dictionary<Card, int> CardPoor { get; private set; }
+
 
         public CardPlayer(CardPlayerTransferModel cardPlayer)
         {

@@ -41,11 +41,6 @@ namespace Models
         private int cardManaCostAfterUpgrade;
 
         /// <summary>
-        /// 卡牌持有者
-        /// </summary>
-        private CardHolder owner;
-
-        /// <summary>
         /// 卡牌稀有度
         /// </summary>
         public Rarity CardRarity { get; private set; }
@@ -121,6 +116,36 @@ namespace Models
                 }
                 effect.SetEffect(temp);
                 cardEffectsAfterUpgrade.Add(effect);
+            }
+        }
+
+        /// <summary>
+        /// 打出卡牌,如果不可打出会返回InvalidOperationException
+        /// </summary>
+        /// <param name="executor"></param>
+        /// <param name="targets"></param>
+        public void Play(CardHolder executor, List<CardHolder> targets)
+        {
+            if (canPlay)
+            {
+                if (isUpgrade)
+                {
+                    foreach (var item in cardEffectsAfterUpgrade)
+                    {
+                        item.Invoke(executor, targets);
+                    }
+                }
+                else
+                {
+                    foreach (var item in cardEffects)
+                    {
+                        item.Invoke(executor, targets);
+                    }
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException();
             }
         }
     }
