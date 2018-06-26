@@ -67,28 +67,28 @@ namespace Models
             bossMonsterRoomList = new List<BossMonsterRoom>();
             eventRoomList = new List<EventRoom>();
 
-            foreach (var item in dungeon.LowLevelNormalMonsterRoomList)
+            foreach (var item in GameDictionary.GameDic.DungeonDic[dungeonName].LowLevelNormalMonsterRoomList)
             {
                 var room = new NormalMonsterRoom();
                 room.SetMonsters(item);
                 lowLevelNormalMonsterRoomList.Add(room);
             }
 
-            foreach (var item in dungeon.HighLevelNormalMsonterRoomList)
+            foreach (var item in GameDictionary.GameDic.DungeonDic[dungeonName].HighLevelNormalMsonterRoomList)
             {
                 var room = new NormalMonsterRoom();
                 room.SetMonsters(item);
                 highLevelNormalMonsterRoomList.Add(room);
             }
 
-            foreach (var item in dungeon.EliteMonsterRoomList)
+            foreach (var item in GameDictionary.GameDic.DungeonDic[dungeonName].EliteMonsterRoomList)
             {
                 var room = new EliteMonsterRoom();
                 room.SetMonsters(item);
                 eliteMonsterRoomList.Add(room);
             }
 
-            foreach (var item in dungeon.BossMonsterRoomList)
+            foreach (var item in GameDictionary.GameDic.DungeonDic[dungeonName].BossMonsterRoomList)
             {
                 var room = new BossMonsterRoom();
                 room.SetMonsters(item);

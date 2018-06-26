@@ -65,7 +65,7 @@ namespace MyCardGameServer
                         throw new Exception();
                 }
             }
-            catch
+            catch (Exception e)
             {
                 Console.WriteLine("A client has sent illegal data");
                 PlayerTransferModel player = new PlayerTransferModel();

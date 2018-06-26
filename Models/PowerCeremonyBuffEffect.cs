@@ -22,7 +22,7 @@ namespace Models
         private void PowerCeremony()
         {
             ApplySingleSelfBuffEffect temp= new ApplySingleSelfBuffEffect();
-            temp.SetEffect(new List<string> { "Power", Convert.ToString(BuffValue)});
+            temp.SetEffect(new List<string> { "力量", Convert.ToString(BuffValue)});
             temp.Invoke(holder, null);
         }
     }

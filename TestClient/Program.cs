@@ -11,7 +11,7 @@ namespace TestClient
     {
         static void Main(string[] args)
         {
-            var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
+            //var gameDic = JsonConvert.DeserializeObject<GameDictionary>(JToken.Parse(File.ReadAllText("GameDic.json")).ToString());
 
 
             /*
@@ -126,10 +126,10 @@ namespace TestClient
             gameDic.MonsterDic.Add("异教徒", monster);
             */
 
-            File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
+            //File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
             //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
 
-            //GameClient.Client.ConnectToServer(FirstContact);
+            GameClient.Client.ConnectToServer(FirstContact);
 
             Console.Read();
         }
@@ -161,7 +161,7 @@ namespace TestClient
 
         private static void EnterDungeon(PlayerTransferModel player)
         {
-            
+            var t = GameClient.Client.Player.GetRoomMap();
         }
     }
 }
