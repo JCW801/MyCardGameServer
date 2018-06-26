@@ -107,7 +107,7 @@ namespace Models
         {
             foreach (var item in buffEffects)
             {
-                item.RemoveBuffEffect(buffHolder);
+                item.RemoveEffect(buffHolder);
             }
         }
     }

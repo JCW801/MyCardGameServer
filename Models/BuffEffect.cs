@@ -7,8 +7,6 @@ namespace Models
     {
         public int BuffValue { get; set; }
 
-        public abstract void RemoveBuffEffect(CardHolder buffOwner);
-
         public override void SetEffect(List<string> list)
         {
         }

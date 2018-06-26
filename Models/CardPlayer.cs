@@ -45,6 +45,7 @@ namespace Models
             foreach (var item in mainHero.HeroDefaultRelics)
             {
                 Relics.Add(item);
+                item.InvokeRelicEffect(this, null);
             }
 
             if (subHero != null)
@@ -52,6 +53,7 @@ namespace Models
                 foreach (var item in subHero.HeroDefaultRelics)
                 {
                     Relics.Add(item);
+                    item.InvokeRelicEffect(this, null);
                 }
             }
         }

@@ -151,21 +151,28 @@ namespace MyCardGameServer
                 return;
             }
 
-            int bytesRead = ss.TheSocket.EndReceive(ar);
-
-            // If the socket is still open
-            if (bytesRead > 0)
+            try
             {
-                string theMessage = Encoding.UTF8.GetString(ss.MessageBuffer, 0, bytesRead);
-                ss.SB.Append(theMessage);
-                if (ss.CallBackFunction != null)
+                int bytesRead = ss.TheSocket.EndReceive(ar);
+                // If the socket is still open
+                if (bytesRead > 0)
                 {
-                    ss.CallBackFunction(ss);
+                    string theMessage = Encoding.UTF8.GetString(ss.MessageBuffer, 0, bytesRead);
+                    ss.SB.Append(theMessage);
+                    if (ss.CallBackFunction != null)
+                    {
+                        ss.CallBackFunction(ss);
+                    }
+                }
+                else
+                {
+                    ss.ID = 0;
                 }
             }
-            else
+            catch (Exception e)
             {
-                ss.ID = 0;
+                ss.TheSocket.Close();
+                return;
             }
         }
 

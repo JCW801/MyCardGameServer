@@ -30,7 +30,7 @@ namespace Models
             executor.AttackDamageChangeEvent += Vulnerable;
         }
 
-        public override void RemoveBuffEffect(CardHolder buffHolder)
+        public override void RemoveEffect(CardHolder buffHolder)
         {
             buffHolder.AttackDamageChangeEvent -= Vulnerable;
         }

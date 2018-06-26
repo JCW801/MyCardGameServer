@@ -12,7 +12,7 @@ namespace Models
             executor.AttackDamageChangeEvent += Power;
         }
 
-        public override void RemoveBuffEffect(CardHolder buffOwner)
+        public override void RemoveEffect(CardHolder buffOwner)
         {
             buffOwner.AttackDamageChangeEvent -= Power;
         }

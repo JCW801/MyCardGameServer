@@ -127,6 +127,9 @@ namespace Models
             }
         }
 
+        /// <summary>
+        /// 根据当前房间类型读取预设房间
+        /// </summary>
         public void SetRoom()
         {
             Random rdm = new Random();
@@ -179,6 +182,21 @@ namespace Models
             }
         }
 
+
+        /// <summary>
+        /// 获取当前房间
+        /// </summary>
+        /// <returns></returns>
+        public DungeonRoom GetCurrentRoom()
+        {
+            return currentRoom;
+        }
+
+        /// <summary>
+        /// 进入下一个房间
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool MoveToNextRoom(int index)
         {
             if (currentRoom == null)
@@ -238,6 +256,10 @@ namespace Models
             }
         }
 
+        /// <summary>
+        /// 获得房间分布
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<int, Dictionary<int, KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>>> GetRoomMap()
         {
             Dictionary<int, Dictionary<int, KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>>> result = new Dictionary<int, Dictionary<int, KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>>>();

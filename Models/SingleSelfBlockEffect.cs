@@ -8,5 +8,10 @@ namespace Models
         {
             executor.GainBlock(BlockValue);
         }
+
+        public override void RemoveEffect(CardHolder owner)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

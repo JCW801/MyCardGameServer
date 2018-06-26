@@ -162,6 +162,17 @@ namespace TestClient
         private static void EnterDungeon(PlayerTransferModel player)
         {
             var t = GameClient.Client.Player.GetRoomMap();
+            int i = 0;
+            foreach (var item in t[0])
+            {
+                i = item.Key;
+                break;
+            }
+            GameClient.Client.EnterDungeonRoom(i,EnterDungeonRoom);
+        }
+
+        private static void EnterDungeonRoom(PlayerTransferModel player)
+        {
         }
     }
 }

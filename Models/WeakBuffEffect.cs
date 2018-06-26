@@ -28,7 +28,7 @@ namespace Models
             executor.TakeAttackDamageChangeEvent += Weak;
         }
 
-        public override void RemoveBuffEffect(CardHolder buffOwner)
+        public override void RemoveEffect(CardHolder buffOwner)
         {
             buffOwner.TakeAttackDamageChangeEvent -= Weak;
         }

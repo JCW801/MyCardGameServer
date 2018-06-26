@@ -20,5 +20,10 @@ namespace Models
                 throw new InvalidOperationException();
             }
         }
+
+        public override void RemoveEffect(CardHolder owner)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

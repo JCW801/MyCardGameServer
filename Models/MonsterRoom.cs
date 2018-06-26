@@ -6,16 +6,15 @@ namespace Models
 {
     public abstract class MonsterRoom : DungeonRoom
     {
-        private Dictionary<Monster, int> roomMonsters; 
+        public Dictionary<Monster, int> RoomMonsters { get; private set; }
 
         public void SetMonsters(Dictionary<string,int> monsters)
         {
-            roomMonsters = new Dictionary<Monster, int>();
+            RoomMonsters = new Dictionary<Monster, int>();
             foreach (var item in monsters)
             {
-                roomMonsters.Add(new Monster(GameDictionary.GameDic.MonsterDic[item.Key]), item.Value);
+                RoomMonsters.Add(new Monster(GameDictionary.GameDic.MonsterDic[item.Key]), item.Value);
             }
         }
-
     }
 }

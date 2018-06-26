@@ -37,6 +37,11 @@ namespace Models
         /// </summary>
         private Dungeon dungeon;
 
+        /// <summary>
+        /// 战斗信息
+        /// </summary>
+        private PVEBattle battle;
+
         public Player(PlayerTransferModel player)
         {
             PlayerName = player.PlayerName;
@@ -113,13 +118,58 @@ namespace Models
             if (dungeon.MoveToNextRoom(index))
             {
                 dungeon.SetRoom();
+                return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// 获得副本内房间
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<int,Dictionary<int,KeyValuePair<DungeonRoomTransferModel.RoomType,bool[]>>> GetRoomMap()
         {
-            return dungeon.GetRoomMap();
+            if (dungeon != null)
+            {
+                return dungeon.GetRoomMap();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 获得所在房间信息
+        /// </summary>
+        /// <returns></returns>
+        public DungeonRoom GetCurrentRoom()
+        {
+            if (dungeon != null)
+            {
+                return dungeon.GetCurrentRoom();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 判断是否已经进入副本
+        /// </summary>
+        /// <returns></returns>
+        public bool EnteredDungeon()
+        {
+            return dungeon == null ? false : true;
+        }
+
+        public void EnterBattle()
+        {
+            if (dungeon.GetCurrentRoom() is MonsterRoom)
+            {
+                battle = new PVEBattle(cardPlayer, dungeon.GetCurrentRoom() as MonsterRoom);
+            }
         }
     }
 }

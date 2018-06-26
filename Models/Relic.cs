@@ -54,5 +54,30 @@ namespace Models
                 relicEffects.Add(effect);
             }
         }
+
+        /// <summary>
+        /// 遗物效果生效
+        /// </summary>
+        /// <param name="holder"></param>
+        /// <param name="targets"></param>
+        public void InvokeRelicEffect(CardHolder holder, ICollection<CardHolder> targets)
+        {
+            foreach (var item in relicEffects)
+            {
+                item.Invoke(holder, targets);
+            }
+        }
+
+        /// <summary>
+        /// 遗物效果失效
+        /// </summary>
+        /// <param name="owner"></param>
+        public void RemoveRelicEffect(CardHolder owner)
+        {
+            foreach (var item in relicEffects)
+            {
+                item.RemoveEffect(owner);
+            }
+        }
     }
 }

@@ -176,9 +176,9 @@ namespace MyCardGameServer
 
         private void ClientEnterDungeon(PlayerTransferModel player, SocketState ss)
         {
+            Console.WriteLine(String.Format("{0} wants to enter {1}.", playerDic[ss].PlayerName, player.TransferMessage));
             if (playerDic.ContainsKey(ss) && player.TransferMessage != null && player.CardPlayer != null && GameDic.DungeonDic.ContainsKey(player.TransferMessage))
             {
-                Console.WriteLine(String.Format("{0} wants to enter {1}.", playerDic[ss].PlayerName, player.TransferMessage));
                 int count = 0;
                 string heroName="";
                 foreach (var item in player.CardPlayer.CardDic)
@@ -235,6 +235,7 @@ namespace MyCardGameServer
                 player.Dungeon = temp;
                 string s = JsonConvert.SerializeObject(player);
                 NetworkController.Send(ss, JsonConvert.SerializeObject(player));
+                Console.WriteLine(String.Format("{0} enters {1} successfully.", playerDic[ss].PlayerName, player.TransferMessage));
             }
             else
             {
@@ -244,12 +245,17 @@ namespace MyCardGameServer
 
         private void ClientEnterDungeonRoom(PlayerTransferModel player, SocketState ss)
         {
+            Console.WriteLine(String.Format("{0} wants to enter room.", playerDic[ss].PlayerName, player.TransferMessage));
             if (playerDic.ContainsKey(ss) && player.TransferMessage != null)
             {
                 int i = Convert.ToInt32(player.TransferMessage);
                 if (playerDic[ss].EnterDungeonRoom(i))
                 {
-                 
+                    var room = playerDic[ss].GetCurrentRoom();
+                    if (room is MonsterRoom)
+                    {
+                        playerDic[ss].EnterBattle();
+                    }
                 }
                 else
                 {

@@ -11,5 +11,10 @@ namespace Models
         {
             executor.GainBuff(Buff, BuffLastTrun);
         }
+
+        public override void RemoveEffect(CardHolder owner)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

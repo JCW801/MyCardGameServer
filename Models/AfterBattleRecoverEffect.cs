@@ -12,6 +12,11 @@ namespace Models
             executor.BattleEndEvent += RecoverEffect;
         }
 
+        public override void RemoveEffect(CardHolder owner)
+        {
+            owner.BattleEndEvent -= RecoverEffect;
+        }
+
         private void RecoverEffect(CardHolder executor)
         {
             executor.GainHealth(RecoverValue);

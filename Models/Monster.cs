@@ -24,6 +24,11 @@ namespace Models
             {
                 Relics.Add(new Relic(GameDictionary.GameDic.RelicDic[item]));
             }
+
+            foreach (var item in Relics)
+            {
+                item.InvokeRelicEffect(this, null);
+            }
         }
     }
 }
