@@ -233,7 +233,6 @@ namespace MyCardGameServer
 
                 player.TransferState = PlayerTransferModel.TransferStateType.Accept;
                 player.Dungeon = temp;
-                string s = JsonConvert.SerializeObject(player);
                 NetworkController.Send(ss, JsonConvert.SerializeObject(player));
                 Console.WriteLine(String.Format("{0} enters {1} successfully.", playerDic[ss].PlayerName, player.TransferMessage));
             }
@@ -249,18 +248,18 @@ namespace MyCardGameServer
             if (playerDic.ContainsKey(ss) && player.TransferMessage != null)
             {
                 int i = Convert.ToInt32(player.TransferMessage);
-                if (playerDic[ss].EnterDungeonRoom(i))
+                if (playerDic[ss].EnteredDungeon() && playerDic[ss].EnterDungeonRoom(i))
                 {
-                    var room = playerDic[ss].GetCurrentRoom();
-                    if (room is MonsterRoom)
-                    {
-                        playerDic[ss].EnterBattle();
-                    }
+                    player.TransferMessage = playerDic[ss].SetDungeonRoom() + "";
                 }
                 else
                 {
                     throw new Exception();
                 }
+
+                player.TransferState = PlayerTransferModel.TransferStateType.Accept;
+                NetworkController.Send(ss, JsonConvert.SerializeObject(player));
+                Console.WriteLine(String.Format("{0} enters room successfully.", playerDic[ss].PlayerName, player.TransferMessage));
             }
             else
             {

@@ -1,1 +1,246 @@
-{"CardDic":{"WarriorStrike":{"CardName":"WarriorStrike","CardSpriteName":"Warrior_Strike_Sprite","CardDescription":"Deal 6 damage.","CardDescriptionAfterUpgreade":"Deal 9 damage.","Owner":"Warrior","CardRarity":0,"CardType":0,"CanUpgrade":true,"CanPlay":true,"CardManaCost":1,"CardManaCostAfterUpgrade":1,"CardEffectsString":["SingleAttack 6 1"],"CardEffectsStringAfterUpgrade":["SingleAttack 9 1"]},"WarriorDefend":{"CardName":"WarriorDefend","CardSpriteName":"Warrior_Defend_Sprite","CardDescription":"Gain 5 Block.","CardDescriptionAfterUpgreade":"Gain 8 Block","Owner":"Warrior","CardRarity":0,"CardType":1,"CanUpgrade":true,"CanPlay":true,"CardManaCost":1,"CardManaCostAfterUpgrade":1,"CardEffectsString":["SingleSelfBlock 5"],"CardEffectsStringAfterUpgrade":["SingleSelfBlock 8"]},"Bash":{"CardName":"Bash","CardSpriteName":"Warrior_Bash_Sprite","CardDescription":"Deal 8 damage. Apply Vulnerable for 2 turns.","CardDescriptionAfterUpgreade":"Deal 10 damage. Apply Vulnerable for 3 turns.","Owner":"Warrior","CardRarity":0,"CardType":0,"CanUpgrade":true,"CanPlay":true,"CardManaCost":2,"CardManaCostAfterUpgrade":2,"CardEffectsString":["SingleAttack 8 1","ApplySingleBuff Vulnerable 2"],"CardEffectsStringAfterUpgrade":["SingleAttack 10 1","ApplySingleBuff Vulnerable 3"]},"YJT_PowerCeremonyCard":{"CardName":"YJT_PowerCeremonyCard","CardSpriteName":"","CardDescription":"","CardDescriptionAfterUpgreade":"","Owner":"异教徒","CardRarity":4,"CardType":2,"CanUpgrade":true,"CanPlay":true,"CardManaCost":1,"CardManaCostAfterUpgrade":1,"CardEffectsString":["ApplySingleSelfBuff 力量仪式 3"],"CardEffectsStringAfterUpgrade":["ApplySingleSelfBuff 力量仪式 5"]},"YJT_AttackCard":{"CardName":"YJT_AttackCard","CardSpriteName":"","CardDescription":"","CardDescriptionAfterUpgreade":"","Owner":"异教徒","CardRarity":4,"CardType":0,"CanUpgrade":true,"CanPlay":true,"CardManaCost":1,"CardManaCostAfterUpgrade":1,"CardEffectsString":["SingleAttack 6 1"],"CardEffectsStringAfterUpgrade":["SingleAttack 9 1"]}},"HeroDic":{"Warrior":{"HeroName":"Warrior","HeroSprite":"Warrior_Sprite","HeroHealth":80,"HeroMana":0,"HeroBasicRilic":["BurningBlood"],"HeroBasicCard":{"Bash":1,"WarriorStrike":5,"WarriorDefend":4},"HeroCard":[]}},"RelicDic":{"BurningBlood":{"RelicName":"BurningBlood","RelicSpriteName":"Relic_BurningBlood_Sprite","RelicEffectsString":["AfterBattleRecover 6"],"RelicDescription":"At the end of combat, heal 6 HP.","RelicRarity":0}},"BuffDic":{"Vulnerable":{"BuffName":"Vulnerable","BuffSpriteName":"Buff_Vulnerable_Sprite","BuffDescription":"All attack damage received will be increased by 50% (this amount can be modified by relics).","IsPower":false,"IsDebuff":true,"BuffEffects":["Vulnerable"]},"力量仪式":{"BuffName":"力量仪式","BuffSpriteName":"Buff_PowerCeremony_Sprite","BuffDescription":"每回合结束时获得力量.","IsPower":true,"IsDebuff":false,"BuffEffects":["PowerCeremony"]},"力量":{"BuffName":"力量","BuffSpriteName":"Buff_Power_Sprite","BuffDescription":"增加攻击时的伤害.","IsPower":true,"IsDebuff":false,"BuffEffects":["Power"]}},"DungeonDic":{"TestDungeon":{"DungeonName":"TestDungeon","DungeonDepth":16,"LowLevelThreshold":7,"DungeonAllowedCardCount":10,"BonfireRoomLevel":[15,12,9],"NormalMonsterRoomLevel":[14,11,10,8,5,4,3,2,1,0],"EventRoomLevel":[14,13,12,10,8,5,4,3,2,1],"EliteMonsterRoomLevel":[13,11,9,6],"TreasureRoomLevel":[7],"ShoppingRoomLevel":[12,8,4],"LowLevelNormalMonsterRoomList":[{"异教徒":1}],"HighLevelNormalMsonterRoomList":[],"EliteMonsterRoomList":[],"BossMonsterRoomList":[],"EventRoomList":[],"RoomDic":null}},"MonsterDic":{"异教徒":{"MonsterName":"异教徒","MonsterSpriteName":"Monster_YJT_Spirte","MonsterHealth":55,"MonsterCardList":["YJT_PowerCeremonyCard","YJT_AttackCard"],"MonsterRelicList":[]}}}
+{
+    "CardDic":{
+        "WarriorStrike":{
+            "CardName":"WarriorStrike",
+            "CardSpriteName":"Warrior_Strike_Sprite",
+            "CardDescription":"Deal 6 damage.",
+            "CardDescriptionAfterUpgreade":"Deal 9 damage.",
+            "Owner":"Warrior",
+            "CardRarity":0,
+            "CardType":0,
+            "CanUpgrade":true,
+            "CanPlay":true,
+            "CardManaCost":1,
+            "CardManaCostAfterUpgrade":1,
+            "CardEffectsString":[
+                "SingleAttack 6 1"
+            ],
+            "CardEffectsStringAfterUpgrade":[
+                "SingleAttack 9 1"
+            ]
+        },
+        "WarriorDefend":{
+            "CardName":"WarriorDefend",
+            "CardSpriteName":"Warrior_Defend_Sprite",
+            "CardDescription":"Gain 5 Block.",
+            "CardDescriptionAfterUpgreade":"Gain 8 Block",
+            "Owner":"Warrior",
+            "CardRarity":0,
+            "CardType":1,
+            "CanUpgrade":true,
+            "CanPlay":true,
+            "CardManaCost":1,
+            "CardManaCostAfterUpgrade":1,
+            "CardEffectsString":[
+                "SingleSelfBlock 5"
+            ],
+            "CardEffectsStringAfterUpgrade":[
+                "SingleSelfBlock 8"
+            ]
+        },
+        "Bash":{
+            "CardName":"Bash",
+            "CardSpriteName":"Warrior_Bash_Sprite",
+            "CardDescription":"Deal 8 damage. Apply Vulnerable for 2 turns.",
+            "CardDescriptionAfterUpgreade":"Deal 10 damage. Apply Vulnerable for 3 turns.",
+            "Owner":"Warrior",
+            "CardRarity":0,
+            "CardType":0,
+            "CanUpgrade":true,
+            "CanPlay":true,
+            "CardManaCost":2,
+            "CardManaCostAfterUpgrade":2,
+            "CardEffectsString":[
+                "SingleAttack 8 1",
+                "ApplySingleBuff Vulnerable 2"
+            ],
+            "CardEffectsStringAfterUpgrade":[
+                "SingleAttack 10 1",
+                "ApplySingleBuff Vulnerable 3"
+            ]
+        },
+        "YJT_PowerCeremonyCard":{
+            "CardName":"YJT_PowerCeremonyCard",
+            "CardSpriteName":"",
+            "CardDescription":"",
+            "CardDescriptionAfterUpgreade":"",
+            "Owner":"异教徒",
+            "CardRarity":4,
+            "CardType":2,
+            "CanUpgrade":true,
+            "CanPlay":true,
+            "CardManaCost":1,
+            "CardManaCostAfterUpgrade":1,
+            "CardEffectsString":[
+                "ApplySingleSelfBuff 力量仪式 3"
+            ],
+            "CardEffectsStringAfterUpgrade":[
+                "ApplySingleSelfBuff 力量仪式 5"
+            ]
+        },
+        "YJT_AttackCard":{
+            "CardName":"YJT_AttackCard",
+            "CardSpriteName":"",
+            "CardDescription":"",
+            "CardDescriptionAfterUpgreade":"",
+            "Owner":"异教徒",
+            "CardRarity":4,
+            "CardType":0,
+            "CanUpgrade":true,
+            "CanPlay":true,
+            "CardManaCost":1,
+            "CardManaCostAfterUpgrade":1,
+            "CardEffectsString":[
+                "SingleAttack 6 1"
+            ],
+            "CardEffectsStringAfterUpgrade":[
+                "SingleAttack 9 1"
+            ]
+        }
+    },
+    "HeroDic":{
+        "Warrior":{
+            "HeroName":"Warrior",
+            "HeroSprite":"Warrior_Sprite",
+            "HeroHealth":80,
+            "HeroMana":0,
+            "HeroBasicRilic":[
+                "BurningBlood"
+            ],
+            "HeroBasicCard":{
+                "Bash":1,
+                "WarriorStrike":5,
+                "WarriorDefend":4
+            },
+            "HeroCard":[
+
+            ]
+        }
+    },
+    "RelicDic":{
+        "BurningBlood":{
+            "RelicName":"BurningBlood",
+            "RelicSpriteName":"Relic_BurningBlood_Sprite",
+            "RelicEffectsString":[
+                "AfterBattleRecover 6"
+            ],
+            "RelicDescription":"At the end of combat, heal 6 HP.",
+            "RelicRarity":0
+        }
+    },
+    "BuffDic":{
+        "Vulnerable":{
+            "BuffName":"Vulnerable",
+            "BuffSpriteName":"Buff_Vulnerable_Sprite",
+            "BuffDescription":"All attack damage received will be increased by 50% (this amount can be modified by relics).",
+            "IsPower":false,
+            "IsDebuff":true,
+            "BuffEffects":[
+                "Vulnerable"
+            ]
+        },
+        "力量仪式":{
+            "BuffName":"力量仪式",
+            "BuffSpriteName":"Buff_PowerCeremony_Sprite",
+            "BuffDescription":"每回合结束时获得力量.",
+            "IsPower":true,
+            "IsDebuff":false,
+            "BuffEffects":[
+                "PowerCeremony"
+            ]
+        },
+        "力量":{
+            "BuffName":"力量",
+            "BuffSpriteName":"Buff_Power_Sprite",
+            "BuffDescription":"增加攻击时的伤害.",
+            "IsPower":true,
+            "IsDebuff":false,
+            "BuffEffects":[
+                "Power"
+            ]
+        }
+    },
+    "DungeonDic":{
+        "TestDungeon":{
+            "DungeonName":"TestDungeon",
+            "DungeonDepth":16,
+            "LowLevelThreshold":7,
+            "DungeonAllowedCardCount":10,
+            "BonfireRoomLevel":[
+                15,
+                12,
+                9
+            ],
+            "NormalMonsterRoomLevel":[
+                14,
+                11,
+                10,
+                8,
+                5,
+                4,
+                3,
+                2,
+                1,
+                0
+            ],
+            "EventRoomLevel":[
+                14,
+                13,
+                12,
+                10,
+                8,
+                5,
+                4,
+                3,
+                2,
+                1
+            ],
+            "EliteMonsterRoomLevel":[
+                13,
+                11,
+                9,
+                6
+            ],
+            "TreasureRoomLevel":[
+                7
+            ],
+            "ShoppingRoomLevel":[
+                12,
+                8,
+                4
+            ],
+            "LowLevelNormalMonsterRoomList":[
+                {
+                    "异教徒":1
+                }
+            ],
+            "HighLevelNormalMsonterRoomList":[
+
+            ],
+            "EliteMonsterRoomList":[
+
+            ],
+            "BossMonsterRoomList":[
+
+            ],
+            "EventRoomList":[
+
+            ],
+            "RoomDic":null
+        }
+    },
+    "MonsterDic":{
+        "异教徒":{
+            "MonsterName":"异教徒",
+            "MonsterSpriteName":"Monster_YJT_Spirte",
+            "MonsterHealth":55,
+			"StartPlayCard":"YJT_PowerCeremonyCard",
+            "MonsterPlayCardList":[
+                ["YJT_AttackCard"]
+            ],
+            "MonsterRelicList":[
+
+            ]
+        }
+    }
+}

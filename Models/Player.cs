@@ -117,21 +117,39 @@ namespace Models
         {
             if (dungeon.MoveToNextRoom(index))
             {
-                dungeon.SetRoom();
                 return true;
             }
             return false;
         }
 
         /// <summary>
+        /// 为房间赋值(客户端勿用)
+        /// </summary>
+        /// <returns></returns>
+        public int SetDungeonRoom()
+        {
+            return dungeon.SetRoom();
+        }
+
+        /// <summary>
+        /// 为房间赋值
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public void SetDungeonRoom(int i)
+        {
+            dungeon.SetRoom(i);
+        }
+
+        /// <summary>
         /// 获得副本内房间
         /// </summary>
         /// <returns></returns>
-        public Dictionary<int,Dictionary<int,KeyValuePair<DungeonRoomTransferModel.RoomType,bool[]>>> GetRoomMap()
+        public SortedList<int,SortedList<int, DungeonRoom>> GetRoomMap()
         {
             if (dungeon != null)
             {
-                return dungeon.GetRoomMap();
+                return dungeon.RoomDic;
             }
             else
             {

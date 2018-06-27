@@ -31,6 +31,11 @@ namespace Models
         public bool HasNextRightRoom { get; private set; }
 
         /// <summary>
+        /// 玩家是否通过
+        /// </summary>
+        public bool IsPassed { get; private set; }
+
+        /// <summary>
         /// 设置房间
         /// </summary>
         /// <param name="dungeonRoom"></param>
@@ -41,6 +46,7 @@ namespace Models
             HasNextLeftRoom = dungeonRoom.HasNextLeftRoom;
             HasNextMiddleRoom = dungeonRoom.HasNextMiddleRoom;
             HasNextRightRoom = dungeonRoom.HasNextRightRoom;
+            IsPassed = false;
         }
 
         /// <summary>
@@ -53,6 +59,15 @@ namespace Models
             HasNextLeftRoom = dungeonRoom.HasNextLeftRoom;
             HasNextMiddleRoom = dungeonRoom.HasNextMiddleRoom;
             HasNextRightRoom = dungeonRoom.HasNextRightRoom;
+            IsPassed = dungeonRoom.IsPassed;
+        }
+
+        /// <summary>
+        /// 玩家通过
+        /// </summary>
+        public void PlayerPassed()
+        {
+            IsPassed = true;
         }
     }
 }

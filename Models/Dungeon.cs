@@ -19,7 +19,7 @@ namespace Models
         /// <summary>
         /// 副本地图
         /// </summary>
-        private SortedList<int, SortedList<int, DungeonRoom>> roomDic;
+        public SortedList<int, SortedList<int, DungeonRoom>> RoomDic { get; set; }
 
         /// <summary>
         /// 副本名称
@@ -55,6 +55,7 @@ namespace Models
         /// 玩家所在副本房间
         /// </summary>
         private DungeonRoom currentRoom;
+
 
         public Dungeon(DungeonTransferModel dungeon)
         {
@@ -95,34 +96,34 @@ namespace Models
                 bossMonsterRoomList.Add(room);
             }
 
-            roomDic = new SortedList<int, SortedList<int, DungeonRoom>>();
+            RoomDic = new SortedList<int, SortedList<int, DungeonRoom>>();
             foreach (var item in dungeon.RoomDic)
             {
-                roomDic.Add(item.Key, new SortedList<int, DungeonRoom>());
+                RoomDic.Add(item.Key, new SortedList<int, DungeonRoom>());
                 foreach (var item2 in item.Value)
                 {
                     switch (item2.Value.Type)
                     {
                         case DungeonRoomTransferModel.RoomType.BonfireRoom:
-                            roomDic[item.Key].Add(item2.Key, new BonfireRoom());
+                            RoomDic[item.Key].Add(item2.Key, new BonfireRoom());
                             break;
                         case DungeonRoomTransferModel.RoomType.EliteMonsterRoom:
-                            roomDic[item.Key].Add(item2.Key, new EliteMonsterRoom());
+                            RoomDic[item.Key].Add(item2.Key, new EliteMonsterRoom());
                             break;
                         case DungeonRoomTransferModel.RoomType.EventRoom:
-                            roomDic[item.Key].Add(item2.Key, new EventRoom());
+                            RoomDic[item.Key].Add(item2.Key, new EventRoom());
                             break;
                         case DungeonRoomTransferModel.RoomType.NormalMonsterRoom:
-                            roomDic[item.Key].Add(item2.Key, new NormalMonsterRoom());
+                            RoomDic[item.Key].Add(item2.Key, new NormalMonsterRoom());
                             break;
                         case DungeonRoomTransferModel.RoomType.ShoppingRoom:
-                            roomDic[item.Key].Add(item2.Key, new ShoppingRoom());
+                            RoomDic[item.Key].Add(item2.Key, new ShoppingRoom());
                             break;
                         case DungeonRoomTransferModel.RoomType.TreasureRoom:
-                            roomDic[item.Key].Add(item2.Key, new TreasureRoom());
+                            RoomDic[item.Key].Add(item2.Key, new TreasureRoom());
                             break;
                     }
-                    roomDic[item.Key][item2.Key].SetRoom(item2.Value);
+                    RoomDic[item.Key][item2.Key].SetRoom(item2.Value);
                 }
             }
         }
@@ -130,13 +131,16 @@ namespace Models
         /// <summary>
         /// 根据当前房间类型读取预设房间
         /// </summary>
-        public void SetRoom()
+        public int SetRoom()
         {
             Random rdm = new Random();
+            int result = -1;
+            currentRoom.PlayerPassed();
             if (currentRoom is EliteMonsterRoom)
             {
-                var room = eliteMonsterRoomList[rdm.Next(eliteMonsterRoomList.Count)];
-                eliteMonsterRoomList.Remove(room);
+                result = rdm.Next(eliteMonsterRoomList.Count);
+                var room = eliteMonsterRoomList[result];
+                eliteMonsterRoomList.RemoveAt(result);
                 room.SetRoom(currentRoom);
                 currentRoom = room;
             }
@@ -148,15 +152,17 @@ namespace Models
             {
                 if (currentRoom.RoomDepth > lowLevelThreshold)
                 {
-                    var room = highLevelNormalMonsterRoomList[rdm.Next(highLevelNormalMonsterRoomList.Count)];
-                    highLevelNormalMonsterRoomList.Remove(room);
+                    result = rdm.Next(highLevelNormalMonsterRoomList.Count);
+                    var room = highLevelNormalMonsterRoomList[result];
+                    highLevelNormalMonsterRoomList.RemoveAt(result);
                     room.SetRoom(currentRoom);
                     currentRoom = room;
                 }
                 else
                 {
-                    var room = lowLevelNormalMonsterRoomList[rdm.Next(lowLevelNormalMonsterRoomList.Count)];
-                    lowLevelNormalMonsterRoomList.Remove(room);
+                    result = rdm.Next(lowLevelNormalMonsterRoomList.Count);
+                    var room = lowLevelNormalMonsterRoomList[result];
+                    lowLevelNormalMonsterRoomList.RemoveAt(result);
                     room.SetRoom(currentRoom);
                     currentRoom = room;
                 }
@@ -175,14 +181,70 @@ namespace Models
             }
             else if (currentRoom is BossMonsterRoom)
             {
-                var room = bossMonsterRoomList[rdm.Next(bossMonsterRoomList.Count)];
-                bossMonsterRoomList.Remove(room);
+                result = rdm.Next(bossMonsterRoomList.Count);
+                var room = bossMonsterRoomList[result];
+                bossMonsterRoomList.RemoveAt(result);
+                room.SetRoom(currentRoom);
+                currentRoom = room;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 设置房间
+        /// </summary>
+        /// <param name="i"></param>
+        public void SetRoom(int i)
+        {
+            currentRoom.PlayerPassed();
+            if (currentRoom is EliteMonsterRoom)
+            {
+                var room = eliteMonsterRoomList[i];
+                eliteMonsterRoomList.RemoveAt(i);
+                room.SetRoom(currentRoom);
+                currentRoom = room;
+            }
+            else if (currentRoom is EventRoom)
+            {
+
+            }
+            else if (currentRoom is NormalMonsterRoom)
+            {
+                if (currentRoom.RoomDepth > lowLevelThreshold)
+                {
+                    var room = highLevelNormalMonsterRoomList[i];
+                    highLevelNormalMonsterRoomList.RemoveAt(i);
+                    room.SetRoom(currentRoom);
+                    currentRoom = room;
+                }
+                else
+                {
+                    var room = lowLevelNormalMonsterRoomList[i];
+                    lowLevelNormalMonsterRoomList.RemoveAt(i);
+                    room.SetRoom(currentRoom);
+                    currentRoom = room;
+                }
+            }
+            else if (currentRoom is ShoppingRoom)
+            {
+
+            }
+            else if (currentRoom is TreasureRoom)
+            {
+
+            }
+            else if (currentRoom is BonfireRoom)
+            {
+
+            }
+            else if (currentRoom is BossMonsterRoom)
+            {
+                var room = bossMonsterRoomList[i];
+                bossMonsterRoomList.RemoveAt(i);
                 room.SetRoom(currentRoom);
                 currentRoom = room;
             }
         }
-
-
         /// <summary>
         /// 获取当前房间
         /// </summary>
@@ -201,9 +263,9 @@ namespace Models
         {
             if (currentRoom == null)
             {
-                if (roomDic[0].ContainsKey(index))
+                if (RoomDic[0].ContainsKey(index))
                 {
-                    currentRoom = roomDic[0][index];
+                    currentRoom = RoomDic[0][index];
                     return true;
                 }
                 else
@@ -223,7 +285,7 @@ namespace Models
                     case -1:
                         if (currentRoom.HasNextLeftRoom)
                         {
-                            currentRoom = roomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex - 1];
+                            currentRoom = RoomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex - 1];
                             return true;
                         }
                         else
@@ -233,7 +295,7 @@ namespace Models
                     case 0:
                         if (currentRoom.HasNextMiddleRoom)
                         {
-                            currentRoom = roomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex];
+                            currentRoom = RoomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex];
                             return true;
                         }
                         else
@@ -243,7 +305,7 @@ namespace Models
                     case 1:
                         if (currentRoom.HasNextRightRoom)
                         {
-                            currentRoom = roomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex - 1];
+                            currentRoom = RoomDic[currentRoom.RoomDepth + 1][currentRoom.RoomIndex - 1];
                             return true;
                         }
                         else
@@ -254,49 +316,6 @@ namespace Models
                         return false;
                 }
             }
-        }
-
-        /// <summary>
-        /// 获得房间分布
-        /// </summary>
-        /// <returns></returns>
-        public Dictionary<int, Dictionary<int, KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>>> GetRoomMap()
-        {
-            Dictionary<int, Dictionary<int, KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>>> result = new Dictionary<int, Dictionary<int, KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>>>();
-            foreach (var item in roomDic)
-            {
-                result.Add(item.Key, new Dictionary<int, KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>>());
-                foreach (var item2 in item.Value)
-                {
-                    DungeonRoomTransferModel.RoomType type;
-                    if (item2.Value is EliteMonsterRoom)
-                    {
-                        type = DungeonRoomTransferModel.RoomType.EliteMonsterRoom;
-                    }
-                    else if (item2.Value is NormalMonsterRoom)
-                    {
-                        type = DungeonRoomTransferModel.RoomType.NormalMonsterRoom;
-                    }
-                    else if (item2.Value is TreasureRoom)
-                    {
-                        type = DungeonRoomTransferModel.RoomType.TreasureRoom;
-                    }
-                    else if (item2.Value is EventRoom)
-                    {
-                        type = DungeonRoomTransferModel.RoomType.EventRoom;
-                    }
-                    else if (item2.Value is ShoppingRoom)
-                    {
-                        type = DungeonRoomTransferModel.RoomType.ShoppingRoom;
-                    }
-                    else
-                    {
-                        type = DungeonRoomTransferModel.RoomType.BonfireRoom;
-                    }
-                    result[item.Key].Add(item2.Key, new KeyValuePair<DungeonRoomTransferModel.RoomType, bool[]>(type, new bool[] {item2.Value.HasNextLeftRoom,item2.Value.HasNextMiddleRoom,item2.Value.HasNextRightRoom }));
-                }
-            }
-            return result;
         }
     }
 }

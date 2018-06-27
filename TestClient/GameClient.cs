@@ -176,6 +176,14 @@ namespace TestClient
                 _callback(playerModel);
                 return;
             }
+            if (!Player.EnterDungeonRoom(index))
+            {
+                playerModel.TransferState = PlayerTransferModel.TransferStateType.Error;
+                playerModel.TransferMessage = "无效房间编号";
+                _callback(playerModel);
+                return;
+            }
+
             playerModel.TransferRequest = PlayerTransferModel.TransferRequestType.EnterDungeonRoom;
             playerModel.TransferMessage = index + "";
 
@@ -197,6 +205,12 @@ namespace TestClient
             {
                 NetworkController.getData(ss);
                 return;
+            }
+
+            if (playerModel.TransferState == PlayerTransferModel.TransferStateType.Accept)
+            {
+                int i = Convert.ToInt32(playerModel.TransferMessage);
+                Player.SetDungeonRoom(i);
             }
 
             playerCallback(playerModel);

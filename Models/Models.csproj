@@ -69,6 +69,7 @@
     <Compile Include="PlayerTransferModel.cs" />
     <Compile Include="PowerBuffEffect.cs" />
     <Compile Include="PowerCeremonyBuffEffect.cs" />
+    <Compile Include="PVEBattleTransferModel.cs" />
     <Compile Include="RelicTransferModel.cs" />
     <Compile Include="TreasureRoom.cs" />
     <Compile Include="VulnerableBuffEffect.cs" />

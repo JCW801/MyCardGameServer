@@ -22,7 +22,7 @@ namespace Models
         /// <summary>
         /// 所持卡牌
         /// </summary>
-        public Dictionary<Card, int> CardPoor { get; private set; }
+        public Dictionary<Card, int> CardPool { get; private set; }
 
 
         public CardPlayer(CardPlayerTransferModel cardPlayer)
@@ -39,12 +39,12 @@ namespace Models
             SpriteName = mainHero.HeroSpriteName;
             MaxHealth = mainHero.HeroHealth;
             MaxMana = mainHero.HeroMana;
-            CardPoor = new Dictionary<Card, int>();
+            CardPool = new Dictionary<Card, int>();
             Relics = new List<Relic>();
 
             foreach (var item in cardPlayer.CardDic)
             {
-                CardPoor.Add(new Card(GameDictionary.GameDic.CardDic[item.Key]), item.Value);
+                CardPool.Add(new Card(GameDictionary.GameDic.CardDic[item.Key]), item.Value);
             }
 
             foreach (var item in mainHero.HeroDefaultRelics)
