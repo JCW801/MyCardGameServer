@@ -52,7 +52,7 @@ namespace Models
         /// </summary>
         public void PlayerTurnStart()
         {
-            player.TurnStart();
+            player.ResetMana();
             foreach (var item in Enumerable.Range(0,playerDrawCardPerTurn))
             {
                 if (playerCardQueue.Count == 0)
@@ -66,6 +66,8 @@ namespace Models
             }
 
             monsterNextTurnCard = enemyMonster.Select(n => n.GetNextPlayCard()).ToList();
+
+            player.TurnStart();
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace Models
         /// </summary>
         /// <param name="cardIndex"></param>
         /// <param name="targetsIndex"></param>
-        public void PlayerPlayCard(int cardIndex, List<int> targetsIndex)
+        public bool PlayerPlayCard(int cardIndex, List<int> targetsIndex)
         {
             List<CardHolder> list = new List<CardHolder>();
             foreach (var item in targetsIndex)
@@ -81,9 +83,13 @@ namespace Models
                 list.Add(enemyMonster[item]);
             }
             Card c = playerCardInHand[cardIndex];
-            c.Play(player, list);
+            if  (!c.Play(player, list))
+            {
+                return false;
+            }
             playerCardInGrave.Add(c);
             playerCardInHand.RemoveAt(cardIndex);
+            return true;
         }
 
         /// <summary>

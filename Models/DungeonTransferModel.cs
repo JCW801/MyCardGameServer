@@ -170,7 +170,7 @@ namespace Models
                 int lastRoomIndex = -10;
                 foreach (var item in roomDic[currentDepth])
                 {
-                    if (rdm.Next(10) < roomDic[currentDepth].Count + 3 || (lastRoomIndex == 6 && item.Key == 6))
+                    if (rdm.Next(10) < roomDic[currentDepth].Count*2 || (lastRoomIndex == 6 && item.Key == 6))
                     {
                         if (lastRoomIndex == 6 && item.Key == 6)
                         {
@@ -263,7 +263,7 @@ namespace Models
                             }
                         }
                     }
-                    else if (rdm.Next(10) < 9 || item.Key == 0 || item.Key == 6 || lastRoomIndex == item.Key)
+                    else if (rdm.Next(10) < 8 || item.Key == 0 || item.Key == 6 || lastRoomIndex == item.Key)
                     {
                         if (item.Key == 6)
                         {

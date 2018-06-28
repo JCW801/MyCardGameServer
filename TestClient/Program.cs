@@ -130,7 +130,7 @@ namespace TestClient
             //File.WriteAllText("GameDic.json", JsonConvert.SerializeObject(gameDic));
             //Console.WriteLine(JsonConvert.SerializeObject(gameDic));
 
-            //GameClient.Client.ConnectToServer(FirstContact);
+            GameClient.Client.ConnectToServer(FirstContact);
 
             Console.Read();
         }
@@ -174,6 +174,7 @@ namespace TestClient
 
         private static void EnterDungeonRoom(PlayerTransferModel player)
         {
+            Player p = GameClient.Client.Player;
         }
     }
 }

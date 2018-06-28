@@ -185,12 +185,14 @@ namespace Models
         /// <summary>
         /// 进入战斗
         /// </summary>
-        public void EnterBattle()
+        public bool EnterBattle()
         {
             if (dungeon.GetCurrentRoom() is MonsterRoom)
             {
                 battle = new PVEBattle(cardPlayer, dungeon.GetCurrentRoom() as MonsterRoom);
+                return true;
             }
+            return false;
         }
     }
 }

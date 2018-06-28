@@ -309,6 +309,29 @@ namespace Models
         }
 
         /// <summary>
+        /// 处理打出卡牌后的蓝量消耗
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public bool PlayCard(Card c)
+        {
+            if (c.IsUpgrade && CurrentMana >= c.CardManaCostAfterUpgrade)
+            {
+                CurrentMana -= c.CardManaCostAfterUpgrade;
+                return true;
+            }
+            else if (CurrentMana >= c.CardManaCost)
+            {
+                CurrentMana -= c.CardManaCost;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// 回合结束
         /// </summary>
         public void TurnEnd()

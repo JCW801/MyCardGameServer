@@ -23,6 +23,7 @@ namespace Models
             Name = monster.MonsterName;
             SpriteName = monster.MonsterSpriteName;
             MaxHealth = monster.MonsterHealth;
+            CurrentHealth = MaxHealth; 
             MaxMana = 1;
             Relics = new List<Relic>();
             normalPlayCardQueue = new Queue<List<Card>>();

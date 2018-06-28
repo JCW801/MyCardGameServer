@@ -33,12 +33,12 @@ namespace Models
         /// <summary>
         /// 卡牌蓝耗
         /// </summary>
-        private int cardManaCost;
+        public int CardManaCost { get; private set; }
 
         /// <summary>
         /// 卡牌升级后蓝耗
         /// </summary>
-        private int cardManaCostAfterUpgrade;
+        public int CardManaCostAfterUpgrade { get; private set; }
 
         /// <summary>
         /// 卡牌稀有度
@@ -63,7 +63,7 @@ namespace Models
         /// <summary>
         /// 卡牌是否升级
         /// </summary>
-        private bool isUpgrade;
+        public bool IsUpgrade { get; private set; }
 
         /// <summary>
         /// 卡牌效果
@@ -81,8 +81,8 @@ namespace Models
             canUpgrade = card.CanUpgrade;
             cardDescription = card.CardDescription;
             cardDescriptionAfterUpgrade = card.CardDescriptionAfterUpgreade;
-            cardManaCost = card.CardManaCost;
-            cardManaCostAfterUpgrade = card.CardManaCostAfterUpgrade;
+            CardManaCost = card.CardManaCost;
+            CardManaCostAfterUpgrade = card.CardManaCostAfterUpgrade;
             CardName = card.CardName;
             CardRarity = card.CardRarity;
             cardSpriteName = card.CardSpriteName;
@@ -120,15 +120,15 @@ namespace Models
         }
 
         /// <summary>
-        /// 打出卡牌,如果不可打出会返回InvalidOperationException
+        /// 打出卡牌
         /// </summary>
         /// <param name="executor"></param>
         /// <param name="targets"></param>
-        public void Play(CardHolder executor, List<CardHolder> targets)
+        public bool Play(CardHolder executor, List<CardHolder> targets)
         {
-            if (canPlay)
+            if (canPlay && executor.PlayCard(this))
             {
-                if (isUpgrade)
+                if (IsUpgrade)
                 {
                     foreach (var item in cardEffectsAfterUpgrade)
                     {
@@ -142,10 +142,11 @@ namespace Models
                         item.Invoke(executor, targets);
                     }
                 }
+                return true;
             }
             else
             {
-                throw new InvalidOperationException();
+                return false;
             }
         }
     }

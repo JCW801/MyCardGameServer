@@ -38,6 +38,7 @@ namespace Models
             Name = mainHero.HeroName;
             SpriteName = mainHero.HeroSpriteName;
             MaxHealth = mainHero.HeroHealth;
+            CurrentHealth = MaxHealth;
             MaxMana = mainHero.HeroMana;
             CardPool = new Dictionary<Card, int>();
             Relics = new List<Relic>();
@@ -61,6 +62,11 @@ namespace Models
                     item.InvokeRelicEffect(this, null);
                 }
             }
+        }
+
+        public void ResetMana()
+        {
+            CurrentMana = MaxMana;
         }
     }
 }
